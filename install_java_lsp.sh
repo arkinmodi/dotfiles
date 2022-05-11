@@ -14,6 +14,14 @@ JDTLS_DOWNLOAD_FILE_NAME=jdt-language-server-1.11.0-202205051421.tar.gz
 JDTLS_HOME="$HOME/jdtls"
 JDTLS_INSTALL_LOCATION="$JDTLS_HOME/jdtls-$JDTLS_VERSION"
 
+# Check for dependencies
+for name in wget
+do
+  [[ $(which $name 2>/dev/null) ]] || { echo -en "\n$name needs to be installed.";deps=1; }
+done
+[[ $deps -ne 1 ]] || { echo -en "\nInstall the above and rerun this script.\n";exit 1; }
+
+
 rm -rf "$JDTLS_HOME" > /dev/null
 mkdir -p "$JDTLS_INSTALL_LOCATION"
 mkdir -p "$JDTLS_HOME/.cache"
@@ -22,6 +30,8 @@ echo "Downloading jdtls version $JDTLS_VERSION..."
 
 wget "https://download.eclipse.org/jdtls/milestones/$JDTLS_VERSION/$JDTLS_DOWNLOAD_FILE_NAME" \
         --quiet \
+        --show-progress \
+        --progress=bar:force:noscroll \
         --directory-prefix="$JDTLS_HOME"
 
 echo "Download complete. Extracting file..."
