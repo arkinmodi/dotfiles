@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { 
+local servers = {
   "jsonls",
   "sumneko_lua",
   "tsserver",
@@ -13,9 +13,9 @@ local servers = {
   "cssmodules_ls",
 }
 
-lsp_installer.setup {
-  ensure_installed = servers
-}
+lsp_installer.setup({
+  ensure_installed = servers,
+})
 
 for _, server in pairs(servers) do
   local opts = {

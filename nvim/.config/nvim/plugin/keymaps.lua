@@ -39,9 +39,9 @@ keymap("v", ">", ">gv", opts)
 -- Terminal --
 
 -- Telescope
-keymap("n", "<C-p>", "<CMD>lua require('telescope.builtin').git_files()<CR>", opts)
+keymap("n", "<M-p>", "<CMD>lua require('telescope.builtin').git_files()<CR>", opts)
 keymap("n", "<S-p>", "<CMD>lua require('telescope.builtin').find_files()<CR>", opts)
-keymap("n", "<S-f>", "<CMD>lua require('telescope.builtin').live_grep()<CR>", opts) -- NEEDS ripgrep installed
+keymap("n", "<leader>f", "<CMD>lua require('telescope.builtin').live_grep()<CR>", opts) -- NEEDS ripgrep installed
 
 -- Nvim Tree (Side Bar File Explorer)
 keymap("n", "<M-e>", ":NvimTreeToggle<CR>", opts)

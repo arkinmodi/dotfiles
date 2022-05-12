@@ -1,5 +1,16 @@
--- Settings here will only apply to Java files
+-- Java Vim Settings
+local options = {
+  tabstop = 4,
+  softtabstop = 4,
+  shiftwidth = 4,
+  colorcolumn = "100",
+}
 
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
+-- Java LSP
 local status_ok, jdtls = pcall(require, "jdtls")
 if not status_ok then
   return
@@ -72,12 +83,7 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts
 vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 vim.api.nvim_set_keymap("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-vim.api.nvim_set_keymap(
-  "n",
-  "gl",
-  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
-  opts
-)
+vim.api.nvim_set_keymap("n", "gl", '<cmd>lua vim.diagnostic.open_float(0, { scope = "line" })<CR>', opts)
 vim.api.nvim_set_keymap("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
@@ -91,7 +97,3 @@ vim.api.nvim_set_keymap("n", "crc", "<cmd>lua require('jdtls').extract_constant(
 vim.api.nvim_set_keymap("v", "crc", "<esc><cmd>lua require('jdtls').extract_constant(true)<CR>", opts)
 
 vim.api.nvim_set_keymap("v", "crm", "<esc><cmd>lua require('jdtls').extract_method(true)<CR>", opts)
-
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4

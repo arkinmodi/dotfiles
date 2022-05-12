@@ -7,4 +7,4 @@ if not status_ok then
   return
 end
 
-vim.cmd "syntax on"
+vim.cmd("syntax on")

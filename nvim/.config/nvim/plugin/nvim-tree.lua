@@ -33,7 +33,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+nvim_tree.setup({
   auto_reload_on_write = true,
   disable_netrw = true,
   hijack_cursor = false,
@@ -57,9 +57,9 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
+        { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+        { key = "h", cb = tree_cb("close_node") },
+        { key = "v", cb = tree_cb("vsplit") },
       },
     },
   },
@@ -75,7 +75,7 @@ nvim_tree.setup {
     icons = {
       webdev_colors = true,
       git_placement = "before",
-    }
+    },
   },
   hijack_directories = {
     enable = true,
@@ -147,5 +147,4 @@ nvim_tree.setup {
       profile = false,
     },
   },
-}
-
+})

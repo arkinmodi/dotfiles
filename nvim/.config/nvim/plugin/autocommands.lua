@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
 
   augroup highlight_yank
     autocmd!
@@ -10,4 +10,4 @@ vim.cmd [[
     autocmd BufWritePre * lua vim.lsp.buf.formatting()
   augroup end
 
-]]
+]])

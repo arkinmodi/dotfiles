@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-configs.setup {
+configs.setup({
   -- "all" or a list of languages (https://github.com/nvim-treesitter/nvim-treesitter#supported-languages)
   ensure_installed = {
     "bash",
@@ -56,4 +56,4 @@ configs.setup {
     enable = true,
     enable_autocmd = false,
   },
-}
+})
