@@ -25,6 +25,7 @@ local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local prefix = vim.fn.expand("~/jdtls/.cache/")
 local cache_dir = prefix .. workspace_dir
 local jdtls_dir = vim.fn.expand("~/jdtls/jdtls-1.11.0/")
+local lombok_dir = vim.fn.expand("~/jdtls/lombok/")
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -38,6 +39,7 @@ local config = {
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
     "-Xms1g",
+    "-javaagent:" .. lombok_dir .. "lombok.jar",
     "-jar",
     jdtls_dir .. "/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
     "-configuration",

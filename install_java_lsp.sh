@@ -13,6 +13,7 @@ JDTLS_DOWNLOAD_FILE_NAME=jdt-language-server-1.11.0-202205051421.tar.gz
 
 JDTLS_HOME="$HOME/jdtls"
 JDTLS_INSTALL_LOCATION="$JDTLS_HOME/jdtls-$JDTLS_VERSION"
+LOMBOK_INSTALL_LOCATION="$JDTLS_HOME/lombok"
 
 # Check for dependencies
 for name in wget
@@ -34,13 +35,23 @@ wget "https://download.eclipse.org/jdtls/milestones/$JDTLS_VERSION/$JDTLS_DOWNLO
         --progress=bar:force:noscroll \
         --directory-prefix="$JDTLS_HOME"
 
-echo "Download complete. Extracting file..."
+echo "Download complete. Extracting jdtls..."
 
 tar -xf "$JDTLS_HOME/$JDTLS_DOWNLOAD_FILE_NAME" \
         --directory="$JDTLS_INSTALL_LOCATION"
 
-echo "Extraction complete. Deleting dowloaded compressed file..."
+echo "Extraction complete. Deleting dowloaded jdtls compressed file..."
 
 rm "$JDTLS_HOME/$JDTLS_DOWNLOAD_FILE_NAME"
 
 echo "jdtls version $JDTLS_VERSION has been installed in $JDTLS_INSTALL_LOCATION"
+
+echo "Downloading lombok..."
+
+wget "https://projectlombok.org/downloads/lombok.jar" \
+        --quiet \
+        --show-progress \
+        --progress=bar:force:noscroll \
+        --directory-prefix="$LOMBOK_INSTALL_LOCATION"
+
+echo "Download complete. Lombok installed in $LOMBOK_INSTALL_LOCATION"
