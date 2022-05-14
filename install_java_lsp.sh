@@ -25,6 +25,7 @@ done
 
 rm -rf "$JDTLS_HOME" > /dev/null
 mkdir -p "$JDTLS_INSTALL_LOCATION"
+mkdir -p "$LOMBOK_INSTALL_LOCATION"
 mkdir -p "$JDTLS_HOME/.cache"
 
 echo "Downloading jdtls version $JDTLS_VERSION..."
