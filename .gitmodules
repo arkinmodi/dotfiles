@@ -1,6 +1,6 @@
-[submodule "zsh/.config/zsh/plugins/zsh-nvm"]
-	path = zsh/.config/zsh/plugins/zsh-nvm
-	url = https://github.com/lukechilds/zsh-nvm.git
 [submodule "zsh/.config/zsh/plugins/zsh-autosuggestions"]
 	path = zsh/.config/zsh/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.config/zsh/plugins/zsh-nvm"]
+	path = zsh/.config/zsh/plugins/zsh-nvm
+	url = git@github.com:lukechilds/zsh-nvm.git
