@@ -11,7 +11,7 @@ do
 done
 [[ $deps -ne 1 ]] || { echo -en "\nInstall the above and rerun this script.\n";exit 1; }
 
-STOW_FOLDERS="nvim"
+STOW_FOLDERS="nvim,zsh"
 
 pushd $DOTFILES
 
