@@ -7,7 +7,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 source "$HOME/.config/zsh/.zshenv_secrets"
 
 export EDITOR="nvim"
-export BROWSER="chrome"
+export BROWSER=
 
 # zsh-nvm plugin
 export NVM_LAZY_LOAD=true
