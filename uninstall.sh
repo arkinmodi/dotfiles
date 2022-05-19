@@ -17,7 +17,6 @@ pushd $DOTFILES
 
 for folder in ${STOW_FOLDERS//,/ }
 do
-  stow --target="$HOME" --delete $folder
-  stow --target="$HOME" $folder
+  stow --delete $folder
 done
 popd
