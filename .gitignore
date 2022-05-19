@@ -1,4 +1,6 @@
 nvim/.config/nvim/plugin/packer_compiled.lua
 nvim/.config/nvim/.undo/
-.DS_Store
-zsh/.config/zsh/.secret.env
+*.DS_Store
+*.zshenv_secrets
+*.zcompdump
+*.zsh_history
