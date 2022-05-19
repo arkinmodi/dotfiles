@@ -4,7 +4,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-source "$HOME/.config/zsh/.zshenv_secrets"
+[[ -f "$HOME/.config/zsh/.zshenv_secrets" ]] && source "$HOME/.config/zsh/.zshenv_secrets"
 
 export EDITOR="nvim"
 export BROWSER=
