@@ -34,6 +34,7 @@ zmodload zsh/complist
 setopt MENU_COMPLETE
 setopt AUTO_LIST
 setopt nocaseglob
+setopt globdots
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
