@@ -57,6 +57,8 @@ return packer.startup(function(use)
   use("lewis6991/impatient.nvim") -- use cache to improve nvim start time
   use("lukas-reineke/indent-blankline.nvim")
   use("folke/which-key.nvim")
+  use("aymericbeaumet/vim-symlink")
+  use("tpope/vim-fugitive")
 
   -- Colorschemes
   use("joshdick/onedark.vim")
