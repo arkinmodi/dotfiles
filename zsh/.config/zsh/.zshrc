@@ -60,7 +60,6 @@ compinit -C
 source "$ZDOTDIR/.zsh_completions"
 
 # Plugins
-source "$ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-nvm/zsh-nvm.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
