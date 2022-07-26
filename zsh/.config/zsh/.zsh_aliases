@@ -9,6 +9,7 @@ alias ll="ls -lh"
 alias lsa="ls -lah"
 
 alias k="kubectl"
+alias python="python3"
 
 alias vi="nvim"
 alias vim="nvim"
