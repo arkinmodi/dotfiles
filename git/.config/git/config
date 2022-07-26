@@ -1,0 +1,40 @@
+[user]
+  name = Arkin Modi
+  email = 16737086+arkinmodi@users.noreply.github.com
+
+[color]
+  ui = true
+
+[core]
+  editor = nvim
+
+[diff]
+  tool = default-difftool
+
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[init]
+  defaultBranch = main
+
+[credential "https://github.com"]
+  helper = 
+  helper = !/usr/local/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper = 
+  helper = !/usr/local/bin/gh auth git-credential
+
+[credential]
+  helper = osxkeychain
+
+[alias]
+  wt = worktree
+  s = status
+  sw = switch
+  swc = switch -c
+  ap = add -p
+  aa = add -A
+
+[worktree]
+  guessRemote = true
