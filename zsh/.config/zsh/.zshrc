@@ -70,3 +70,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if command -v "fnm" &> /dev/null; then
   eval "$(fnm env --use-on-cd)"
 fi
+
+# pyenv (Simple Python Version Management)
+eval "$(pyenv init -)"

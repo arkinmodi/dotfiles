@@ -9,9 +9,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export EDITOR="nvim"
 export BROWSER=
 
-# zsh-nvm plugin
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
+# pyenv (Simple Python Version Management)
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Java
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/ibm-semeru-open-17.jdk/Contents/Home
