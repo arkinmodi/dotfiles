@@ -14,7 +14,7 @@ export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 
 # Java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/ibm-semeru-open-17.jdk/Contents/Home
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # GitHub CLI
