@@ -9,6 +9,9 @@ setopt incappendhistory
 # Environment Variables
 source "$ZDOTDIR/.zshenv"
 
+# Homebrew
+[ -d "/opt/homebrew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Prompt
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 
@@ -62,9 +65,6 @@ source "$ZDOTDIR/.zsh_completions"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 # source "$ZDOTDIR/plugins/zsh-nvm/zsh-nvm.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # fnm (Fast Node Manager)
 if command -v "fnm" &> /dev/null; then
