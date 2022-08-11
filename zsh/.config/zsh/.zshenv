@@ -11,7 +11,7 @@ export BROWSER=
 
 # pyenv (Simple Python Version Management)
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null && export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Java
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/ibm-semeru-open-17.jdk/Contents/Home

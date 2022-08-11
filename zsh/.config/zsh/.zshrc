@@ -67,10 +67,10 @@ source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 # fnm (Fast Node Manager)
-command -v "fnm" &> /dev/null || eval "$(fnm env --use-on-cd)"
+command -v "fnm" &> /dev/null && eval "$(fnm env --use-on-cd)"
 
 # pyenv (Simple Python Version Management)
-command -v pyenv >/dev/null || eval "$(pyenv init -)"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
 # Rust
-[ -e "$HOME/.cargo/env" ] || source "$HOME/.cargo/env"
+[ -e "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
