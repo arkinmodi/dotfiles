@@ -10,7 +10,7 @@ setopt incappendhistory
 source "$ZDOTDIR/.zshenv"
 
 # Homebrew
-[ -d "/opt/homebrew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Prompt
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
@@ -67,9 +67,10 @@ source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 # fnm (Fast Node Manager)
-if command -v "fnm" &> /dev/null; then
-  eval "$(fnm env --use-on-cd)"
-fi
+command -v "fnm" &> /dev/null || eval "$(fnm env --use-on-cd)"
 
 # pyenv (Simple Python Version Management)
-eval "$(pyenv init -)"
+command -v pyenv >/dev/null || eval "$(pyenv init -)"
+
+# Rust
+[ -e "$HOME/.cargo/env" ] || source "$HOME/.cargo/env"

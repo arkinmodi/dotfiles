@@ -4,3 +4,4 @@ nvim/.config/nvim/.undo/
 *.zshenv_secrets
 *.zcompdump
 *.zsh_history
+*.session
