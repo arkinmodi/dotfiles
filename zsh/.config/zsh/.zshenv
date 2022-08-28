@@ -15,7 +15,11 @@ command -v pyenv >/dev/null && export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Java
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/ibm-semeru-open-17.jdk/Contents/Home
-export PATH="$JAVA_HOME/bin:$PATH"
+if [ -d $JAVA_HOME ]; then
+  export PATH="$JAVA_HOME/bin:$PATH"
+else
+  unset JAVA_HOME
+fi
 
 # GitHub CLI
 export GH_HOST=github.com
