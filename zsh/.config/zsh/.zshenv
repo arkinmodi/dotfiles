@@ -6,7 +6,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 [[ -f "$HOME/.config/zsh/.zshenv_secrets" ]] && source "$HOME/.config/zsh/.zshenv_secrets"
 
-export EDITOR="nvim"
+# setting EDITOR will change tmux bindings
+# export EDITOR="nvim"
+
 export BROWSER=
 
 # pyenv (Simple Python Version Management)
