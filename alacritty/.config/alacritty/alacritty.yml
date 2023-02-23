@@ -1,6 +1,9 @@
 import:
   - "~/.config/alacritty/colors/tokyo-night.yml"
 
+env:
+  TERM: xterm-256color
+
 window:
   dimensions:
     columns: 130
@@ -10,13 +13,15 @@ window:
     x: 10
     y: 30
   dynamic_title: true
+  decorations: "transparent"
+
+selection:
   save_to_clipboard: true
-  live_config_reload: true
-  decorations: "Transparent" # Full, Transparent, Buttonless, None
+
+live_config_reload: true
 
 font:
   size: 14
-  ligatures: true
   normal:
     family: Hack Nerd Font Mono
     style: Regular

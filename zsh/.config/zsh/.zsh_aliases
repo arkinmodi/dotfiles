@@ -14,4 +14,6 @@ alias python="python3"
 alias vi="nvim"
 alias vim="nvim"
 
-command -v bat &> /dev/null && alias cat="bat"
+command -v bat &> /dev/null && alias cat="bat --paging=never"
+
+command -v gsed &> /dev/null && alias sed="gsed"
