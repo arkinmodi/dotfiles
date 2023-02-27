@@ -1,7 +1,7 @@
-nvim/.config/nvim/plugin/packer_compiled.lua
-nvim/.config/nvim/.undo/
 *.DS_Store
-*.zshenv_secrets
+*.session
 *.zcompdump
 *.zsh_history
-*.session
+*.zshenv_secrets
+nvim/.config/nvim/.undo/
+nvim/.config/nvim/plugin/packer_compiled.lua
