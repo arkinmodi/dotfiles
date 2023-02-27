@@ -23,6 +23,9 @@ return require('packer').startup(function(use)
   -- gitsigns
   use('lewis6991/gitsigns.nvim')
 
+  -- auto complete pairs (e.g, '{' -> '{}')
+  use("windwp/nvim-autopairs")
+
   -- colours
   use ('navarasu/onedark.nvim')
 
@@ -49,5 +52,8 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+  use("jose-elias-alvarez/null-ls.nvim")
+
+
 
 end)
