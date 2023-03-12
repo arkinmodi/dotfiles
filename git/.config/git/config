@@ -18,17 +18,17 @@
   tool = default-difftool
 
 [difftool "default-difftool"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = nvim -d $LOCAL $REMOTE
 
 [init]
   defaultBranch = main
 
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential]
