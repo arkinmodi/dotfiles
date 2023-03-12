@@ -29,6 +29,8 @@ return require("packer").startup(function(use)
 
 	-- colours
 	use("navarasu/onedark.nvim")
+	use("rose-pine/neovim")
+	use("folke/tokyonight.nvim")
 
 	-- LSP
 	use({
@@ -58,4 +60,5 @@ return require("packer").startup(function(use)
 	-- Commenting
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+    use("folke/todo-comments.nvim")
 end)

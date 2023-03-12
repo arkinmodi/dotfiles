@@ -1,7 +1,9 @@
-require('onedark').setup({
-    style = 'darker',
-    transparent = true,
+require("onedark").setup({
+	style = "darker",
+	transparent = true,
 })
+
+require("rose-pine").setup()
 
 function ColourMe(colour)
 	colour = colour or "onedark"
