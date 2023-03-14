@@ -9,7 +9,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
-vim.opt.wrap= false
+vim.opt.wrap = false
 
 -- Backups
 vim.opt.swapfile = false
@@ -35,5 +35,5 @@ vim.opt.timeoutlen = 3000
 
 -- Show Whitespace
 -- vim.opt.listchars="eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
-vim.opt.listchars="tab:>·,trail:~,extends:>,precedes:<,space:·"
+vim.opt.listchars = "tab:  ,trail:▒"
 vim.opt.list = true
