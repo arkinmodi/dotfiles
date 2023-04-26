@@ -2,10 +2,6 @@
 	path = zsh/.config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 	shallow = true
-[submodule "zsh/.config/zsh/plugins/zsh-nvm"]
-	path = zsh/.config/zsh/plugins/zsh-nvm
-	url = https://github.com/lukechilds/zsh-nvm.git
-	shallow = true
 [submodule "zsh/.config/zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/.config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

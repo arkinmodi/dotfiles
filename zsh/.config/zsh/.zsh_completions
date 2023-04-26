@@ -1,4 +1,6 @@
-if command -v "kubectl" &> /dev/null; then 
+#!/usr/bin/env zsh
+
+if command -v "kubectl" &> /dev/null; then
   [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 fi
 

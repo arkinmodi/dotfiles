@@ -63,7 +63,6 @@ source "$ZDOTDIR/.zsh_completions"
 
 # Plugins
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-# source "$ZDOTDIR/plugins/zsh-nvm/zsh-nvm.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 # fnm (Fast Node Manager)
