@@ -1,51 +1,50 @@
-local lsp = require('lsp-zero').preset({
-   name = 'recommended',
-   -- name = 'minimal',
-   set_lsp_keymaps = true,
-   manage_nvim_cmp = true,
-   suggest_lsp_servers = false
+local lsp = require("lsp-zero").preset({
+	name = "recommended",
+	-- name = 'minimal',
+	set_lsp_keymaps = true,
+	manage_nvim_cmp = true,
+	suggest_lsp_servers = false,
 })
 
 lsp.ensure_installed({
-  'lua_ls',
+	"lua_ls",
 })
-
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
+lsp.configure("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 })
 
-local cmp = require('cmp')
+local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<CR>'] = vim.NIL,
-  ['<S-Tab>'] = vim.NIL,
-  ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+	["<CR>"] = vim.NIL,
+	["<S-Tab>"] = vim.NIL,
+	["<Tab>"] = cmp.mapping.confirm({ select = true }),
+	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+	["<C-y>"] = cmp.mapping.confirm({ select = true }),
+	["<C-Space>"] = cmp.mapping.complete(),
 })
 
 lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+	suggest_lsp_servers = false,
+	sign_icons = {
+		error = "E",
+		warn = "W",
+		hint = "H",
+		info = "I",
+	},
 })
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+	mapping = cmp_mappings,
 })
 
 -- lsp.nvim_workspace()
@@ -78,7 +77,6 @@ null_ls.setup({
 	},
 })
 
-
 vim.diagnostic.config({
-    virtual_text = true
+	virtual_text = true,
 })
