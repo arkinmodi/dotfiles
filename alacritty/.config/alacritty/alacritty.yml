@@ -7,7 +7,7 @@ env:
 window:
   dimensions:
     columns: 130
-    lines: 30
+    lines: 50
   opacity: 1.00
   padding:
     x: 10
