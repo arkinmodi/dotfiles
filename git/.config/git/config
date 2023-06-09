@@ -41,6 +41,11 @@
   swc = switch -c
   ap = add -p
   aa = add -A
+  comit = commit
+  git = !git
+  grpe = grep
 
 [worktree]
   guessRemote = true
+[fetch]
+  prune = true

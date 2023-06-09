@@ -15,8 +15,8 @@ alias vi="nvim"
 alias vim="nvim"
 
 command -v bat &> /dev/null && alias cat="bat --paging=never"
-
 command -v gsed &> /dev/null && alias sed="gsed"
+command -v gtar &> /dev/null && alias tar="gtar"
 
 if [[ $(uname) == 'Darwin' ]]; then
     [ ! -e '/Applications/Firefox.app/Contents/MacOS/firefox' ] || alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
