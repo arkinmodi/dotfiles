@@ -13,14 +13,6 @@ export BROWSER=
 
 export PATH="$HOME/bin:$PATH"
 
-# pyenv (Simple Python Version Management)
-export PYENV_ROOT="$HOME/.pyenv"
-if [ -d $PYENV_ROOT ]; then
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-else
-    unset PYENV_ROOT
-fi
-
 # Java
 command -v java >& /dev/null && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
 
