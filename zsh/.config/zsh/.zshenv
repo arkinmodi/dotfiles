@@ -14,7 +14,7 @@ export BROWSER=
 export PATH="$HOME/bin:$PATH"
 
 # Java
-command -v java >& /dev/null && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
+readlink $(which java) && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
 
 # GitHub CLI
 export GH_HOST=github.com
