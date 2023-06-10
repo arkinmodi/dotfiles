@@ -11,6 +11,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 export BROWSER=
 
+export PATH="$HOME/bin:$PATH"
+
 # pyenv (Simple Python Version Management)
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT ]; then
@@ -20,12 +22,7 @@ else
 fi
 
 # Java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/ibm-semeru-open-17.jdk/Contents/Home
-if [ -d $JAVA_HOME ]; then
-  export PATH="$JAVA_HOME/bin:$PATH"
-else
-  unset JAVA_HOME
-fi
+command -v java >& /dev/null && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
 
 # GitHub CLI
 export GH_HOST=github.com
