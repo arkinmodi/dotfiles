@@ -11,11 +11,12 @@ export XDG_DATA_HOME="$HOME/.local/share"
 
 export BROWSER=
 
-export PATH="$HOME/bin:$PATH"
-
 # Java
 readlink $(which java) >& /dev/null && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
 
 # GitHub CLI
 export GH_HOST=github.com
 export GH_CONFIG_DIR="$XDG_CONFIG_HOME/gh"
+
+# Put user managed bin first
+export PATH="$HOME/bin:$PATH"

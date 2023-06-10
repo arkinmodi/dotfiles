@@ -6,11 +6,6 @@ setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
 
-# Environment Variables
-source "$ZDOTDIR/.zshenv"
-
-# Homebrew
-[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Prompt
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
@@ -70,3 +65,9 @@ command -v "fnm" &> /dev/null && eval "$(fnm env --use-on-cd)"
 
 # Rust
 [ -e "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+# Homebrew
+[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Environment Variables
+source "$ZDOTDIR/.zshenv"
