@@ -60,9 +60,6 @@ source "$ZDOTDIR/.zsh_completions"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
-# fnm (Fast Node Manager)
-command -v "fnm" &> /dev/null && eval "$(fnm env --use-on-cd)"
-
 # Rust
 [ -e "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
