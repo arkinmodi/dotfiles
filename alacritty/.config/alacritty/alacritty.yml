@@ -1,5 +1,5 @@
 import:
-  - "~/.config/alacritty/colors/hyper.yaml"
+  - "~/.config/alacritty/colors/ayu-dark.yaml"
 
 env:
   TERM: xterm-256color

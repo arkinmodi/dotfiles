@@ -9,7 +9,11 @@ colors:
   normal:
     black: '0x01060E'
     red: '0xEA6C73'
-    green: '0x91B362'
+
+    # Change green to bright version
+    # green: '0x91B362'
+    green: '0xC2D94C'
+
     yellow: '0xF9AF4F'
     blue: '0x53BDFA'
     magenta: '0xFAE994'
