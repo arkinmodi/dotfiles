@@ -38,6 +38,7 @@ return require("lazy").setup({
 	"rose-pine/neovim",
 	"folke/tokyonight.nvim",
 	{ "catppuccin/nvim", name = "catppuccin" },
+    "Shatur/neovim-ayu",
 
 	-- LSP
 	{
