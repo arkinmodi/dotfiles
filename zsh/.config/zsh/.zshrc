@@ -19,12 +19,6 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-# Aliases
-source "$ZDOTDIR/.zsh_aliases"
-
-# Functions
-source "$ZDOTDIR/.zsh_functions"
-
 # Completions
 autoload -U compaudit compinit
 zmodload zsh/complist
@@ -68,3 +62,9 @@ source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.
 
 # Environment Variables
 source "$ZDOTDIR/.zshenv"
+
+# Aliases
+source "$ZDOTDIR/.zsh_aliases"
+
+# Functions
+source "$ZDOTDIR/.zsh_functions"

@@ -11,12 +11,11 @@ alias lsa="ls -lah"
 alias k="kubectl"
 alias python="python3"
 
-alias vi="nvim"
-alias vim="nvim"
-
 command -v bat &> /dev/null && alias cat="bat --paging=never"
 command -v gsed &> /dev/null && alias sed="gsed"
 command -v gtar &> /dev/null && alias tar="gtar"
+command -v nvim &> /dev/null && alias vi="nvim" && alias vim="nvim"
+command -v podman &> /dev/null && alias docker="podman"
 
 if [[ $(uname) == 'Darwin' ]]; then
     [ ! -e '/Applications/Firefox.app/Contents/MacOS/firefox' ] || alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
