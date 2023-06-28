@@ -68,4 +68,6 @@ return require("lazy").setup({
 	"numToStr/Comment.nvim",
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"folke/todo-comments.nvim",
+
+    "lukas-reineke/indent-blankline.nvim",
 })
