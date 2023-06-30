@@ -35,5 +35,6 @@ vim.opt.timeoutlen = 3000
 
 -- Show Whitespace
 -- vim.opt.listchars="eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
-vim.opt.listchars = "tab:  ,trail:▒"
+-- ░ ▒ ▓ █
+vim.opt.listchars = "tab:  ,trail:▓"
 vim.opt.list = true
