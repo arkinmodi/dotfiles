@@ -12,8 +12,12 @@ alias k="kubectl"
 alias python="python3"
 
 command -v bat &> /dev/null && alias cat="bat --paging=never"
+command -v gfind &> /dev/null && alias find="gfind"
+command -v glocate &> /dev/null && alias locate="glocate"
 command -v gsed &> /dev/null && alias sed="gsed"
 command -v gtar &> /dev/null && alias tar="gtar"
+command -v gupdatedb &> /dev/null && alias updatedb="gupdatedb"
+command -v gxargs &> /dev/null && alias xargs="gxargs"
 command -v nvim &> /dev/null && alias vi="nvim" && alias vim="nvim"
 command -v podman &> /dev/null && alias docker="podman"
 
