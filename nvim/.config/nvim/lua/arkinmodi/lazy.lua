@@ -38,7 +38,7 @@ return require("lazy").setup({
 	"rose-pine/neovim",
 	"folke/tokyonight.nvim",
 	{ "catppuccin/nvim", name = "catppuccin" },
-    "Shatur/neovim-ayu",
+	"Shatur/neovim-ayu",
 
 	-- LSP
 	{
@@ -62,6 +62,8 @@ return require("lazy").setup({
 			{ "L3MON4D3/LuaSnip" }, -- Required
 		},
 	},
+	-- TODO: null-ls is being archived and will eventually stop working due to
+	-- neovim or formatter changes
 	"jose-elias-alvarez/null-ls.nvim",
 
 	-- Commenting
@@ -69,5 +71,5 @@ return require("lazy").setup({
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"folke/todo-comments.nvim",
 
-    "lukas-reineke/indent-blankline.nvim",
+	"lukas-reineke/indent-blankline.nvim",
 })
