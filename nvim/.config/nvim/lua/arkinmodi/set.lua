@@ -21,6 +21,10 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- Spelling
+vim.opt.spell = true
+vim.opt.spelllang = 'en_ca'
+
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 9
