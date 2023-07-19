@@ -10,6 +10,7 @@ alias lsa="ls -lah"
 
 alias k="kubectl"
 alias python="python3"
+alias tms="tmux-sessionizer"
 
 command -v bat &> /dev/null && alias cat="bat --paging=never"
 command -v gfind &> /dev/null && alias find="gfind"

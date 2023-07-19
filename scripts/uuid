@@ -2,5 +2,5 @@
 
 set -euo pipefail
 
-python3 -c 'import uuid; print(uuid.uuid4())' | tr -d '\n' | pbcopy
+python3 -c 'import uuid; print(uuid.uuid4(), end="")' | pbcopy
 echo 'Copied a random UUID to your clipboard'
