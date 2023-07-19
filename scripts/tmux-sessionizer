@@ -22,7 +22,7 @@ fi
 
 dest_name=$(basename "$dest_dir" | tr . _)
 
-if [[ ! -v "${TMUX:-}" ]]; then
+if [[ ! -v TMUX ]]; then
     # we are not inside tmux
     tmux new-session -A -c "$dest_dir" -s "$dest_name"
     exit 0
