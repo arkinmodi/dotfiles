@@ -65,6 +65,3 @@ source "$ZDOTDIR/.zshenv"
 
 # Aliases
 source "$ZDOTDIR/.zsh_aliases"
-
-# Functions
-source "$ZDOTDIR/.zsh_functions"

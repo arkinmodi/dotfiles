@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+TITLE='Terminal'
+MESSAGE=$*
+
+PLATFORM=$(uname)
+if [[ $PLATFORM == 'Darwin' ]]; then
+    # Sounds located in
+    # - ~/Library/Sounds
+    # - /System/Library/Sounds
+
+    SOUND_NAME='Ping'
+    osascript -e 'display notification "'$MESSAGE'" with title "'$TITLE'" sound name "'$SOUND_NAME'"'
+
+elif [[ $PLATFORM == 'Linux' ]]; then
+    notify-send "$TITLE" "$MESSAGE"
+fi
