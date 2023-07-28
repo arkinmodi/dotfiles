@@ -23,7 +23,7 @@ vim.opt.incsearch = true
 
 -- Spelling
 vim.opt.spell = true
-vim.opt.spelllang = 'en_ca'
+vim.opt.spelllang = "en_ca"
 
 vim.opt.termguicolors = true
 
