@@ -17,3 +17,7 @@ zsh
 env
 subsequence
 preprocess
+formatter
+todo
+neovim
+nvim

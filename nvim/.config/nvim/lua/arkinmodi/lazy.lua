@@ -72,5 +72,9 @@ return require("lazy").setup({
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"folke/todo-comments.nvim",
 
+	-- indent level guide lines
 	"lukas-reineke/indent-blankline.nvim",
+
+	-- center's window
+	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 })
