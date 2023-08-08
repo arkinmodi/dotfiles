@@ -1,6 +1,15 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -euo pipefail
 
-python3 -c 'import uuid; print(uuid.uuid4(), end="")' | pbcopy
-echo 'Copied a random UUID to your clipboard'
+uuid=$(python3 -c 'import uuid; print(uuid.uuid4(), end="")')
+
+
+PLATFORM=$(uname)
+if [[ $PLATFORM == 'Darwin' ]]; then
+    pbcopy <<< $uuid
+elif [[ $PLATFORM == 'Linux' ]]; then
+    xclip -selection clipboard <<< $uuid
+fi
+
+echo "Copied a $uuid to your clipboard"
