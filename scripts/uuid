@@ -7,9 +7,9 @@ uuid=$(python3 -c 'import uuid; print(uuid.uuid4(), end="")')
 
 PLATFORM=$(uname)
 if [[ $PLATFORM == 'Darwin' ]]; then
-    pbcopy <<< $uuid
+    echo -n $uuid | pbcopy
 elif [[ $PLATFORM == 'Linux' ]]; then
-    xclip -selection clipboard <<< $uuid
+    echo -n $uuid | xclip -selection clipboard
 fi
 
 echo "Copied a $uuid to your clipboard"
