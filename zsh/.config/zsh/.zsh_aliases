@@ -12,6 +12,7 @@ alias k="kubectl"
 alias python="python3"
 alias tms="tmux-sessionizer"
 
+command -v awshelp &> /dev/null && alias aws="awshelp"
 command -v bat &> /dev/null && alias cat="bat --paging=never"
 command -v gfind &> /dev/null && alias find="gfind"
 command -v glocate &> /dev/null && alias locate="glocate"
