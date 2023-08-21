@@ -34,3 +34,14 @@ function ColourMe(colour)
 end
 
 ColourMe()
+
+require("colorizer").setup({
+	"css",
+	"html",
+	"javascript",
+	"typescript",
+}, {
+	css = true,
+	css_fn = true,
+	mode = "background",
+})

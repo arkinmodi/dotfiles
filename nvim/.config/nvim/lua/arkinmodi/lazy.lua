@@ -41,6 +41,9 @@ return require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin" },
 	"Shatur/neovim-ayu",
 
+	-- hex colour code preview
+	"norcalli/nvim-colorizer.lua",
+
 	-- LSP
 	{
 		"VonHeikemen/lsp-zero.nvim",
