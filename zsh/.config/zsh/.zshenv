@@ -20,3 +20,6 @@ readlink $(which java) >& /dev/null && export JAVA_HOME="$(dirname $(dirname $(r
 # GitHub CLI
 export GH_HOST=github.com
 export GH_CONFIG_DIR="$XDG_CONFIG_HOME/gh"
+
+# AWS
+export SAM_CLI_TELEMETRY=0
