@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import re
 import subprocess
 
 
@@ -24,31 +23,16 @@ def main() -> int:
         print('No remotes configured!')
         return 1
 
+    origin_info = subprocess.run(
+        ['git', 'symbolic-ref', '--short', 'refs/remotes/origin/HEAD'],
+        capture_output=True,
+        encoding='UTF-8',
+    )
+    default_branch = origin_info.stdout.splitlines()[0].removeprefix('origin/')
+    subprocess.run(['git', 'switch', default_branch, '--quiet'])
+
     upstream_branches = set()
     for remote in upstreams.stdout.splitlines():
-        remote_info = subprocess.run(
-            ['git', 'remote', 'show', remote],
-            capture_output=True,
-            encoding='UTF-8',
-        )
-        head_branch = re.search(
-            'HEAD branch: (?P<branch_name>.*)',
-            remote_info.stdout,
-        )
-        default_branch = head_branch['branch_name']
-
-        subprocess.run(['git', 'switch', default_branch, '--quiet'])
-        pull = subprocess.run(
-            ['git', 'pull', remote, default_branch, '--quiet']
-        )
-
-        if pull.returncode != 0:
-            print(
-                f'Failed to pull {remote}/{default_branch}, check for ',
-                'uncommitted changes',
-            )
-            return 1
-
         remote_refs = subprocess.run(
             [
                 'git',
@@ -60,9 +44,8 @@ def main() -> int:
             encoding='UTF-8',
         )
         upstream_branches.update(
-            [rr[1:-1] for rr in remote_refs.stdout.splitlines()]
+            [rr[1:-1] for rr in remote_refs.stdout.splitlines()],
         )
-
     upstream_branches.discard('HEAD')
 
     head_refs = subprocess.run(
@@ -75,7 +58,7 @@ def main() -> int:
         capture_output=True,
         encoding='UTF-8',
     )
-    local_branches = set([hr[1:-1] for hr in head_refs.stdout.splitlines()])
+    local_branches = {hr[1:-1] for hr in head_refs.stdout.splitlines()}
     victims = local_branches.difference(upstream_branches)
 
     if args.dry_run:
