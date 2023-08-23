@@ -23,3 +23,7 @@ export GH_CONFIG_DIR="$XDG_CONFIG_HOME/gh"
 
 # AWS
 export SAM_CLI_TELEMETRY=0
+
+# Rust
+readlink $(which cargo) >& /dev/null && export CARGO_HOME="$(dirname $(dirname $(readlink $(which cargo))))"
+readlink $(which rustup) >& /dev/null && export RUSTUP_HOME="$(dirname $(dirname $(dirname $(readlink $(which cargo)))))/.rustup"

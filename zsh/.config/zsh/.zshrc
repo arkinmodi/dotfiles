@@ -54,9 +54,6 @@ source "$ZDOTDIR/.zsh_completions"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
-# Rust
-[ -e "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-
 # Homebrew
 [ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
