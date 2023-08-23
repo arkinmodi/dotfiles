@@ -12,4 +12,5 @@ elif [[ $PLATFORM == 'Linux' ]]; then
     echo -n $uuid | xclip -selection clipboard
 fi
 
-echo "Copied a $uuid to your clipboard"
+echo "Copied uuid to your clipboard" >> /dev/stderr
+echo "$uuid"
