@@ -11,6 +11,12 @@ def main() -> int:
     parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
 
+    current_branch = subprocess.run(
+        ['git', 'branch', '--show-current'],
+        capture_output=True,
+        encoding='UTF-8',
+    )
+
     subprocess.run(['git', 'fetch', '--all', '--prune', '--quiet'])
 
     upstreams = subprocess.run(
@@ -65,11 +71,24 @@ def main() -> int:
         print('Deleting branches:')
         for branch in victims:
             print(branch)
-    else:
+    elif len(victims):
         op = ['git', 'branch', '--delete']
         if args.force:
             op.append('--force')
-        subprocess.run([*op,  *victims])
+        git_delete = subprocess.run([*op,  *victims])
+
+        if git_delete.returncode != 0:
+            print('\nNot all branches were deleted. Try running with --force.')
+
+    subprocess.run(
+        [
+            'git',
+            'switch',
+            '--quiet',
+            current_branch.stdout.splitlines()[0],
+        ],
+        capture_output=True,
+    )
 
     return 0
 
