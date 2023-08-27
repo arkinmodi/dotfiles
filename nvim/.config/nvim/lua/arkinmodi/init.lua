@@ -3,13 +3,11 @@ require("arkinmodi.set")
 require("arkinmodi.lazy")
 
 local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Highlight Yanks
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
-
 autocmd("TextYankPost", {
-	group = yank_group,
+	group = augroup("HighlightYank", { clear = true }),
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({
@@ -20,10 +18,8 @@ autocmd("TextYankPost", {
 })
 
 -- Auto-Remove Whitespace
-local whitespace_group = augroup("Whitespace", {})
-
 autocmd({ "BufWritePre" }, {
-	group = whitespace_group,
+	group = augroup("Whitespace", { clear = true }),
 	pattern = "*",
 	command = "%s/\\s\\+$//e",
 })
