@@ -15,10 +15,10 @@ def get_url(remote: str) -> str:
     ).stdout.strip()
 
     if git_url.startswith('http'):
-        return git_url.removesuffix('.git')
+        return git_url.removesuffix('.git').replace('.wiki', '/wiki')
     else:
         _, domain, repo = re.split('@|:', git_url)
-        repo = repo.removesuffix('.git')
+        repo = repo.removesuffix('.git').replace('.wiki', '/wiki')
         return f'https://{domain}/{repo}'
 
 
