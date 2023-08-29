@@ -8,7 +8,7 @@ import sys
 import webbrowser
 
 
-def get_repo_url(remote: str) -> str:
+def _get_repo_url(remote: str) -> str:
     git_url = subprocess.run(
         ['git', 'remote', 'get-url', remote],
         capture_output=True,
@@ -23,7 +23,7 @@ def get_repo_url(remote: str) -> str:
         return f'https://{domain}/{repo}/'
 
 
-def get_branch_name() -> str:
+def _get_branch_name() -> str:
     return subprocess.run(
         ['git', 'rev-parse', '--abbrev-ref', 'HEAD'],
         capture_output=True,
@@ -32,7 +32,7 @@ def get_branch_name() -> str:
 
 
 def repo(remote: str, open_browser: bool) -> None:
-    url = get_repo_url(remote)
+    url = _get_repo_url(remote)
     print(url)
     if open_browser:
         webbrowser.open_new_tab(url)
@@ -44,9 +44,9 @@ def pull_request(
     open_browser: bool,
 ) -> int:
     if not branch_name:
-        branch_name = get_branch_name()
+        branch_name = _get_branch_name()
 
-    url = get_repo_url(remote)
+    url = _get_repo_url(remote)
     if url.endswith('/wiki/'):
         print("Wikis don't have pull requests", file=sys.stderr)
         return 1
@@ -65,9 +65,9 @@ def file(
     open_browser: bool,
 ) -> None:
     if not branch_name:
-        branch_name = get_branch_name()
+        branch_name = _get_branch_name()
 
-    url = get_repo_url(remote)
+    url = _get_repo_url(remote)
     if url.endswith('/wiki/'):
         url += filename.removesuffix('.md')
     else:
