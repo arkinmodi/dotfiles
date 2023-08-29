@@ -92,39 +92,44 @@ def main() -> int:
 
     repo_parser = subparser.add_parser('repo')
     repo_parser.add_argument(
-        '-w',
-        '--web',
+        '-n',
+        '--no-browser',
         action='store_true',
-        help='Open a repository in the browser',
+        help='Do not open a repository in the browser',
     )
 
     pr_parser = subparser.add_parser('pr')
     pr_parser.add_argument('-b', '--branch', help='Branch name')
     pr_parser.add_argument(
-        '-w',
-        '--web',
+        '-n',
+        '--no-browser',
         action='store_true',
-        help='Open a repository in the browser',
+        help='Do not open a pull request in the browser',
     )
 
     file_parser = subparser.add_parser('file')
     file_parser.add_argument('-b', '--branch', help='Branch name')
     file_parser.add_argument(
-        '-w',
-        '--web',
+        '-n',
+        '--no-browser',
         action='store_true',
-        help='Open a repository in the browser',
+        help='Do not open a file in the browser',
     )
     file_parser.add_argument('filename', nargs=1)
     args = parser.parse_args()
 
     subparser_name = args.subparser_name
     if subparser_name == 'repo':
-        return repo(args.remote, args.web)
+        return repo(args.remote, not args.no_browser)
     elif subparser_name == 'pr':
-        return pull_request(args.remote, args.branch, args.web)
+        return pull_request(args.remote, args.branch, not args.no_browser)
     elif subparser_name == 'file':
-        return file(args.remote, args.branch, args.filename[0], args.web)
+        return file(
+            args.remote,
+            args.branch,
+            args.filename[0],
+            not args.no_browser,
+        )
     else:
         parser.print_usage()
         return 1
