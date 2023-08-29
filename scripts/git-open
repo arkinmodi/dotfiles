@@ -31,11 +31,12 @@ def _get_branch_name() -> str:
     ).stdout.strip()
 
 
-def repo(remote: str, open_browser: bool) -> None:
+def repo(remote: str, open_browser: bool) -> int:
     url = _get_repo_url(remote)
     print(url)
     if open_browser:
         webbrowser.open_new_tab(url)
+    return 0
 
 
 def pull_request(
@@ -63,7 +64,7 @@ def file(
     branch_name: str | None,
     filename: str,
     open_browser: bool,
-) -> None:
+) -> int:
     if not branch_name:
         branch_name = _get_branch_name()
 
@@ -76,6 +77,7 @@ def file(
     print(url)
     if open_browser:
         webbrowser.open_new_tab(url)
+    return 0
 
 
 def main() -> int:
@@ -118,16 +120,14 @@ def main() -> int:
 
     subparser_name = args.subparser_name
     if subparser_name == 'repo':
-        repo(args.remote, args.web)
+        return repo(args.remote, args.web)
     elif subparser_name == 'pr':
-        pull_request(args.remote, args.branch, args.web)
+        return pull_request(args.remote, args.branch, args.web)
     elif subparser_name == 'file':
-        file(args.remote, args.branch, args.filename[0], args.web)
+        return file(args.remote, args.branch, args.filename[0], args.web)
     else:
         parser.print_usage()
         return 1
-
-    return 0
 
 
 if __name__ == '__main__':
