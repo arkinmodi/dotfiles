@@ -1,14 +1,14 @@
 [user]
+  email = 16737086+arkinmodi@users.noreply.github.com
   name = Arkin Modi
   user = arkinmodi
-  email = 16737086+arkinmodi@users.noreply.github.com
 
 [color]
-  status = auto
-  diff = auto
   branch = auto
-  interactive = auto
+  diff = auto
   grep = auto
+  interactive = auto
+  status = auto
   ui = auto
 
 [core]
@@ -23,29 +23,25 @@
 [init]
   defaultBranch = main
 
-[credential "https://github.com"]
-	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
-
-[credential "https://gist.github.com"]
-	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
-
 [credential]
   helper = osxkeychain
 
 [alias]
-  wt = worktree
-  s = status
-  sw = switch
-  swc = switch -c
-  ap = add -p
   aa = add -A
+  ap = add -p
   comit = commit
   git = !git
   grpe = grep
+  of = open file
+  opr = open pr
+  or = open repo
+  s = status
+  sw = switch
+  swc = switch origin -c
+  wt = worktree
 
 [worktree]
   guessRemote = true
+
 [fetch]
   prune = true
