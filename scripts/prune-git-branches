@@ -36,6 +36,7 @@ def main() -> int:
     )
     default_branch = origin_info.stdout.splitlines()[0].removeprefix('origin/')
     subprocess.run(['git', 'switch', default_branch, '--quiet'])
+    subprocess.run(['git', 'pull', '--all', '--prune', '--quiet'])
 
     upstream_branches = set()
     for remote in upstreams.stdout.splitlines():
