@@ -37,7 +37,7 @@
   or = open repo
   s = status
   sw = switch
-  swc = switch origin -c
+  swc = switch origin/main -c
   wt = worktree
 
 [worktree]
