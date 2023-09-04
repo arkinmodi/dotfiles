@@ -18,6 +18,11 @@ export PATH="$HOME/bin:$PATH"
 readlink $(which java) >& /dev/null \
     && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
 
+# Java LSP Config (jdtls)
+# Options: https://github.com/eclipse-jdtls/eclipse.jdt.ls/blob/master/org.eclipse.jdt.ls.core/src/org/eclipse/jdt/ls/core/internal/preferences/Preferences.java
+[[ -f "$HOME/opt/java/lombok.jar" ]] \
+    && export JDTLS_JVM_ARGS="-javaagent:$HOME/opt/java/lombok.jar"
+
 # GitHub CLI
 export GH_HOST=github.com
 export GH_CONFIG_DIR="$XDG_CONFIG_HOME/gh"

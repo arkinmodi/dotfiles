@@ -1,72 +1,87 @@
-local lsp = require("lsp-zero").preset({
-	name = "recommended",
-	-- name = 'minimal',
-	set_lsp_keymaps = true,
-	manage_nvim_cmp = true,
-	suggest_lsp_servers = false,
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = ev.buf })
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf })
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf })
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf })
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf })
+		vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { buffer = ev.buf })
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = ev.buf })
+		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = ev.buf })
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = ev.buf })
+
+		vim.keymap.set("n", "<leader>f", function()
+			vim.lsp.buf.format({ async = false })
+		end, { buffer = ev.buf })
+	end,
 })
 
-lsp.ensure_installed({
-	"lua_ls",
+vim.diagnostic.config({ virtual_text = true })
+
+local cmp = require("cmp")
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<CR>"] = vim.NIL,
+		["<S-Tab>"] = vim.NIL,
+		["<Tab>"] = cmp.mapping.confirm({ select = true }),
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+		["<C-Space>"] = cmp.mapping.complete(),
+	}),
+	sources = cmp.config.sources({
+		{ name = "luasnip" },
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+	}, { name = "buffer" }),
 })
 
--- Fix Undefined global 'vim'
-lsp.configure("lua_ls", {
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+-- Supported LSP Configs
+-- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
+
+-- Lua
+lspconfig["lua_ls"].setup({
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			diagnostics = {
+				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
 			},
 		},
 	},
 })
 
-local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<CR>"] = vim.NIL,
-	["<S-Tab>"] = vim.NIL,
-	["<Tab>"] = cmp.mapping.confirm({ select = true }),
-	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-	["<C-y>"] = cmp.mapping.confirm({ select = true }),
-	["<C-Space>"] = cmp.mapping.complete(),
-})
+lspconfig["rust_analyzer"].setup({ capabilities = capabilities }) -- Rust
+lspconfig["jdtls"].setup({ capabilities = capabilities }) -- Java
 
-lsp.set_preferences({
-	suggest_lsp_servers = false,
-	sign_icons = {
-		error = "E",
-		warn = "W",
-		hint = "H",
-		info = "I",
-	},
-})
-
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings,
-})
-
--- stylua: ignore start
-lsp.on_attach(function(_, bufnr)
-    local opts = { buffer = bufnr, remap = false }
-
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    vim.keymap.set({ "n", "x" }, "<leader>ff", function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end,
-        opts)
-end)
--- stylua: ignore end
-
-lsp.setup()
+-- TODO: Setup:
+-- gopls (https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/gopls.lua)
+-- tsserver (https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/tsserver.lua)
+-- jsonls (https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/jsonls.lua)
+--     https://github.com/hrsh7th/vscode-langservers-extracted (html, cssls, jsonls, eslint)
+-- tailwindcss (https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/tailwindcss.lua)
+-- astro (https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/astro.lua)
+-- yamlls (https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/yamlls.lua)
+-- docker???
+-- docker-compose???
 
 local null_ls = require("null-ls")
 null_ls.setup({
@@ -77,8 +92,4 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.stylua,
 	},
-})
-
-vim.diagnostic.config({
-	virtual_text = true,
 })
