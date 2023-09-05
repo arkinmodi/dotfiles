@@ -64,7 +64,4 @@ return require("lazy").setup({
 
 	-- indent level guide lines
 	"lukas-reineke/indent-blankline.nvim",
-
-	-- center's window
-	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 })
