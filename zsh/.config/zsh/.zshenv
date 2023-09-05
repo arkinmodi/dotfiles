@@ -23,10 +23,6 @@ readlink $(which java) >& /dev/null \
 [[ -f "$HOME/opt/java/lombok.jar" ]] \
     && export JDTLS_JVM_ARGS="-javaagent:$HOME/opt/java/lombok.jar"
 
-# GitHub CLI
-export GH_HOST=github.com
-export GH_CONFIG_DIR="$XDG_CONFIG_HOME/gh"
-
 # AWS
 export SAM_CLI_TELEMETRY=0
 
