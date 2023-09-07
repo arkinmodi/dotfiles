@@ -84,19 +84,21 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<CR>"] = vim.NIL,
-		["<S-Tab>"] = vim.NIL,
-		["<Tab>"] = cmp.mapping.confirm({ select = true }),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<Tab>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
+		{ name = "buffer" },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
-	}, { name = "buffer" }),
+		{ name = "path" },
+	}, {
+		{ name = "buffer" },
+	}),
 })
 
 local lspconfig = require("lspconfig")

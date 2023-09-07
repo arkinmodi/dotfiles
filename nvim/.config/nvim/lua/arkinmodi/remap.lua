@@ -32,3 +32,5 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "lpext with center
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 	desc = "find and replace the word the cursor is over (globally and not ignoring case for the pattern)",
 })
+
+vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "un-indent" })

@@ -16,13 +16,20 @@ return require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
 	-- treesitter
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	"nvim-treesitter/nvim-treesitter-context",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-context",
+		},
+	},
 
 	-- undotree
 	"mbbill/undotree",
@@ -38,19 +45,23 @@ return require("lazy").setup({
 	"rose-pine/neovim",
 	"folke/tokyonight.nvim",
 	{ "catppuccin/nvim", name = "catppuccin" },
-	"Shatur/neovim-ayu",
+	{ "Shatur/neovim-ayu", lazy = false, priority = 1000 },
 
 	-- hex colour code preview
 	"norcalli/nvim-colorizer.lua",
 
 	-- LSP
-	"L3MON4D3/LuaSnip",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-nvim-lua",
-	"hrsh7th/cmp-path",
-	"hrsh7th/nvim-cmp",
 	"neovim/nvim-lspconfig",
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-path",
+			{ "L3MON4D3/LuaSnip", version = "2.*" },
+		},
+	},
 
 	-- TODO: null-ls is being archived and will eventually stop working due to
 	-- neovim or formatter changes
@@ -63,4 +74,11 @@ return require("lazy").setup({
 
 	-- indent level guide lines
 	"lukas-reineke/indent-blankline.nvim",
+
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 })
