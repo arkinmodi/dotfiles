@@ -1,1 +1,2 @@
-require("arkinmodi")
+require("arkinmodi.core")
+require("arkinmodi.lazy")
