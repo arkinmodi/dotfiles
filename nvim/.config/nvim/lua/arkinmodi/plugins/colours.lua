@@ -36,11 +36,11 @@ return {
 		opts = {
 			style = "darker",
 			transparent = true,
-		}
+		},
 	},
 	{
 		"rose-pine/neovim",
-		name = 'rose-pine',
+		name = "rose-pine",
 		lazy = true,
 		config = true,
 	},

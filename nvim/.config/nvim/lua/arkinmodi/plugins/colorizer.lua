@@ -1,7 +1,7 @@
 return {
 	"norcalli/nvim-colorizer.lua",
 	event = { "BufReadPre", "BufNewFile" },
-	config = function ()
+	config = function()
 		require("colorizer").setup({
 			"css",
 			"html",
@@ -12,5 +12,5 @@ return {
 			css_fn = true,
 			mode = "background",
 		})
-	end
+	end,
 }
