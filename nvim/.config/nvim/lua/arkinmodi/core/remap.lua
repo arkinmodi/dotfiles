@@ -34,3 +34,10 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 })
 
 vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "un-indent" })
+
+-- diagnostics
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "vim.diagnostic.setloclist" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "vim.diagnostic.goto_prev" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "vim.diagnostic.goto_next" })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float" })
+vim.diagnostic.config({ virtual_text = true })
