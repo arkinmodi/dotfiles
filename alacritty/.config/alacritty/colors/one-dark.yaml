@@ -1,3 +1,6 @@
+# yamllint disable rule:line-length
+# yaml-language-server: $schema=https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json
+# yamllint enable rule:line-length
 ---
 # One Dark
 # https://github.com/atom/atom/tree/master/packages/one-dark-syntax
