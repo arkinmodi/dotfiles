@@ -34,6 +34,25 @@ def main() -> int:
         capture_output=True,
         encoding='UTF-8',
     )
+
+    if origin_info.returncode:
+        origin_head_not_set_error = 'fatal: ref refs/remotes/origin/HEAD is '\
+            'not a symbolic ref\n'
+
+        if origin_info.stderr == origin_head_not_set_error:
+            # could also run `git remote set-head origin main` if
+            # main is the default branch
+            print(
+                'origin default branch not set! Try running:\n'
+                'git remote set-head origin --auto'
+            )
+        else:
+            print(
+                "Failed to get info on origin's default branch! "
+                f'Error: {origin_info.stderr}'
+            )
+        return 1
+
     default_branch = origin_info.stdout.splitlines()[0].removeprefix('origin/')
     subprocess.run(['git', 'switch', default_branch, '--quiet'])
     subprocess.run(['git', 'pull', '--all', '--prune', '--quiet'])
