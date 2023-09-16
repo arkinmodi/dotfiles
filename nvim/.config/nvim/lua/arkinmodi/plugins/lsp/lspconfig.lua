@@ -67,6 +67,10 @@ return {
 			lspconfig["astro"].setup({ capabilities = capabilities }) -- Astro
 		end
 
+		if vim.fn.executable("terraform-ls") == 1 then
+			lspconfig["terraformls"].setup({ capabilities = capabilities }) -- Terraform
+		end
+
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			lspconfig["yamlls"].setup({
