@@ -5,10 +5,33 @@ import argparse
 import subprocess
 
 
+def _prompt_yes_no(question: str, default: str | None = None) -> bool:
+    opts = {"y": True, "ye": True, "yes": True, "n": False, "no": False}
+
+    if not default:
+        prompt = '[y/n]'
+    elif default == 'yes':
+        prompt = '[Y/n]'
+    elif default == 'no':
+        prompt = '[y/N]'
+    else:
+        raise ValueError(f'Invalid default prompt "{default}"')
+
+    while True:
+        print(f'{question} {prompt} ', flush=True)
+        choice = input().lower()
+        if default and not choice:
+            return opts[default]
+        elif choice in opts:
+            return opts[choice]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dry-run', action='store_true')
-    parser.add_argument('--force', action='store_true')
+    parser.add_argument('-f', '--force', action='store_true')
+    parser.add_argument('-n', '--dry-run', action='store_true')
+    parser.add_argument('-p', '--pick', action='store_true')
+    parser.add_argument('-y', '--yes', action='store_true')
     args = parser.parse_args()
 
     current_branch = subprocess.run(
@@ -44,12 +67,12 @@ def main() -> int:
             # main is the default branch
             print(
                 'origin default branch not set! Try running:\n'
-                'git remote set-head origin --auto'
+                'git remote set-head origin --auto',
             )
         else:
             print(
                 "Failed to get info on origin's default branch! "
-                f'Error: {origin_info.stderr}'
+                f'Error: {origin_info.stderr}',
             )
         return 1
 
@@ -87,15 +110,27 @@ def main() -> int:
     local_branches = {hr[1:-1] for hr in head_refs.stdout.splitlines()}
     victims = local_branches.difference(upstream_branches)
 
-    if args.dry_run:
+    if args.pick and len(victims):
+        victims = {
+            v
+            for v in victims
+            if _prompt_yes_no(f'Delete branch "{v}"?')
+        }
+    elif len(victims):
         print('Deleting branches:')
         for branch in victims:
             print(branch)
-    elif len(victims):
+    else:
+        print('Nothing to delete.')
+
+    if not args.dry_run and len(victims):
+        if not args.yes and not _prompt_yes_no('Do you want to continue?'):
+            return 0
+
         op = ['git', 'branch', '--delete']
         if args.force:
             op.append('--force')
-        git_delete = subprocess.run([*op,  *victims])
+        git_delete = subprocess.run([*op, *victims])
 
         if git_delete.returncode != 0:
             print('\nNot all branches were deleted. Try running with --force.')
