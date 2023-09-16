@@ -2,14 +2,13 @@
 
 set -euo pipefail
 
-uuid=$(python3 -c 'import uuid; print(uuid.uuid4(), end="")')
-
+uuid=$(uuidgen)
 
 PLATFORM=$(uname)
 if [[ $PLATFORM == 'Darwin' ]]; then
-    echo -n $uuid | pbcopy
+    echo -n "$uuid" | pbcopy
 elif [[ $PLATFORM == 'Linux' ]]; then
-    echo -n $uuid | xclip -selection clipboard
+    echo -n "$uuid" | xclip -selection clipboard
 fi
 
 echo "Copied uuid to your clipboard" >> /dev/stderr
