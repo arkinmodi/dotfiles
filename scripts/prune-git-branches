@@ -123,10 +123,14 @@ def main() -> int:
     else:
         print('Nothing to delete.')
 
-    if not args.dry_run and len(victims):
-        if not args.yes and not _prompt_yes_no('Do you want to continue?'):
-            return 0
-
+    if (
+        not args.dry_run and
+        len(victims) and
+        (
+            args.yes or
+            _prompt_yes_no('Do you want to continue?')
+        )
+    ):
         op = ['git', 'branch', '--delete']
         if args.force:
             op.append('--force')
