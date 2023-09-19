@@ -35,6 +35,7 @@
   of = open file
   opr = open pr
   or = open repo
+  pb = prune-branches
   s = status
   sw = switch
   swc = switch origin/main -c

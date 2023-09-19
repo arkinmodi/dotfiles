@@ -18,7 +18,7 @@ def _prompt_yes_no(question: str, default: str | None = None) -> bool:
         raise ValueError(f'Invalid default prompt "{default}"')
 
     while True:
-        print(f'{question} {prompt} ', flush=True)
+        print(f'{question} {prompt} ', end='', flush=True)
         choice = input().lower()
         if default and not choice:
             return opts[default]
@@ -28,10 +28,26 @@ def _prompt_yes_no(question: str, default: str | None = None) -> bool:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--force', action='store_true')
+    parser.add_argument(
+        '-f',
+        '--force',
+        action='store_true',
+        help='use git force delete branch',
+    )
     parser.add_argument('-n', '--dry-run', action='store_true')
-    parser.add_argument('-p', '--pick', action='store_true')
-    parser.add_argument('-y', '--yes', action='store_true')
+    parser.add_argument(
+        '-p',
+        '--pick',
+        action='store_true',
+        help='interactively select branches to delete',
+    )
+    parser.add_argument(
+        '-y',
+        '--yes',
+        '--assume-yes',
+        action='store_true',
+        help='assume "yes" as answer to all prompts and run non-interactively',
+    )
     args = parser.parse_args()
 
     current_branch = subprocess.run(
@@ -110,7 +126,7 @@ def main() -> int:
     local_branches = {hr[1:-1] for hr in head_refs.stdout.splitlines()}
     victims = local_branches.difference(upstream_branches)
 
-    if args.pick and len(victims):
+    if not args.yes and args.pick and len(victims):
         victims = {
             v
             for v in victims
