@@ -15,7 +15,7 @@ def _prompt_yes_no(question: str, default: str | None = None) -> bool:
     elif default == 'no':
         prompt = '[y/N]'
     else:
-        raise ValueError(f'Invalid default prompt "{default}"')
+        raise ValueError(f'Invalid default prompt {default!r}')
 
     while True:
         print(f'{question} {prompt} ', end='', flush=True)
@@ -129,12 +129,14 @@ def main() -> int:
     if not args.yes and args.pick and len(victims):
         victims = {
             v
-            for v in victims
-            if _prompt_yes_no(f'Delete branch "{v}"?')
+            for v in sorted(victims)
+            if _prompt_yes_no(f'Delete branch {v!r}?')
         }
-    elif len(victims):
+        print()
+
+    if len(victims):
         print('Deleting branches:')
-        for branch in victims:
+        for branch in sorted(victims):
             print(branch)
     else:
         print('Nothing to delete.')
