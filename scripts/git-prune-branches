@@ -124,19 +124,19 @@ def main() -> int:
         encoding='UTF-8',
     )
     local_branches = {hr[1:-1] for hr in head_refs.stdout.splitlines()}
-    victims = local_branches.difference(upstream_branches)
+    victims = sorted(local_branches.difference(upstream_branches))
 
     if not args.yes and args.pick and len(victims):
-        victims = {
+        victims = [
             v
-            for v in sorted(victims)
+            for v in victims
             if _prompt_yes_no(f'Delete branch {v!r}?')
-        }
+        ]
         print()
 
     if len(victims):
         print('Deleting branches:')
-        for branch in sorted(victims):
+        for branch in victims:
             print(branch)
     else:
         print('Nothing to delete.')

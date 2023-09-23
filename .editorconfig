@@ -8,7 +8,7 @@ insert_final_newline = true
 max_line_length = 80
 trim_trailing_whitespace = true
 
-[{scripts/{prune-git-branches,git-open}, *.py}]
+[{scripts/{git-prune-branches,git-open}, *.py}]
 max_line_length = 79
 
 [*.lua]
