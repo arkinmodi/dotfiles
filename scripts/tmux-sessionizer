@@ -21,7 +21,10 @@ else
         -maxdepth 1 \
         -type d \
         | fzf \
-        --preview 'ls -la --color=always {}' \
+        --preview 'onefetch {} \
+            --disabled-fields churn authors contributors \
+            2> /dev/null \
+            || ls -la --color=always {}' \
         --preview-window 'up'
     )
 fi
