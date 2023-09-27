@@ -21,10 +21,15 @@ else
         -maxdepth 1 \
         -type d \
         | fzf \
-        --preview 'onefetch {} \
+        --preview '
+            onefetch {} \
+            --type programming markup prose data \
+            --exclude package-lock.json \
             --disabled-fields churn authors contributors \
+            --no-title \
             2> /dev/null \
-            || ls -la --color=always {}' \
+            || ls -la --color=always {}
+        ' \
         --preview-window 'up'
     )
 fi
