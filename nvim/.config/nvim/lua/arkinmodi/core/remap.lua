@@ -50,8 +50,8 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "never use ex mode" })
 vim.keymap.set("n", "x", '"_x', { desc = "delete character without yanking" })
 
 -- quick-fix navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "cnext with centered cursor" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "cpext with centered cursor" })
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "cnext with centered cursor" })
+vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "cpext with centered cursor" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "lnext with centered cursor" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "lpext with centered cursor" })
 
