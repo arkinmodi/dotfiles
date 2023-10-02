@@ -6,7 +6,7 @@ import subprocess
 
 
 def _prompt_yes_no(question: str, default: str | None = None) -> bool:
-    opts = {"y": True, "ye": True, "yes": True, "n": False, "no": False}
+    opts = {'y': True, 'ye': True, 'yes': True, 'n': False, 'no': False}
 
     if not default:
         prompt = '[y/n]'
