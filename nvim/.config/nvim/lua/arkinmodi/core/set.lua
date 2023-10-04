@@ -14,8 +14,13 @@ vim.opt.wrap = false
 -- Backups
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
+if os.getenv("XDG_CACHE_HOME") then
+	vim.opt.undodir = os.getenv("XDG_CACHE_HOME") .. "/.vim/undodir"
+else
+	vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+end
 
 -- Search Highlighting
 vim.opt.hlsearch = false
@@ -34,6 +39,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "81"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number,screenline"
 
 vim.opt.timeoutlen = 3000
 
