@@ -20,7 +20,7 @@ def _get_repo_url(remote: str) -> str:
     else:
         _, domain, repo = re.split('@|:', git_url)
         repo = repo.removesuffix('.git').replace('.wiki', '/wiki')
-        return f'https://{domain}/{repo}/'
+        return f'https://{domain}/{repo}'
 
 
 def _get_branch_name() -> str:
@@ -48,11 +48,11 @@ def pull_request(
         branch_name = _get_branch_name()
 
     url = _get_repo_url(remote)
-    if url.endswith('/wiki/'):
+    if url.endswith('/wiki'):
         print("Wikis don't have pull requests", file=sys.stderr)
         return 1
 
-    url += f'pull/{branch_name}'
+    url += f'/pull/{branch_name}'
     print(url)
     if open_browser:
         webbrowser.open_new_tab(url)
@@ -69,10 +69,10 @@ def file(
         branch_name = _get_branch_name()
 
     url = _get_repo_url(remote)
-    if url.endswith('/wiki/'):
-        url += filename.removesuffix('.md')
+    if url.endswith('/wiki'):
+        url += f'/{filename.removesuffix(".md")}'
     else:
-        url += f'blob/{branch_name}/{filename}'
+        url += f'/blob/{branch_name}/{filename}'
 
     print(url)
     if open_browser:
