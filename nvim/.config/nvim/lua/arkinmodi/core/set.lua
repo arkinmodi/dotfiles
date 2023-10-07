@@ -49,6 +49,3 @@ vim.opt.timeoutlen = 3000
 -- ░ ▒ ▓ █
 vim.opt.listchars = "tab:  ,trail:▓"
 vim.opt.list = true
-
--- Python 3 Provider
-vim.g.python3_host_prog = os.getenv("HOME") .. "/bin/python3"

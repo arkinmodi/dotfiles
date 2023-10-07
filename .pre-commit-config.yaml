@@ -45,6 +45,7 @@ repos:
     rev: v1.32.0
     hooks:
       - id: yamllint
+        args: [--strict]
   - repo: https://github.com/JohnnyMorganz/StyLua
     rev: v0.18.2
     hooks:
