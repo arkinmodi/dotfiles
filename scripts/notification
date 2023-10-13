@@ -14,8 +14,7 @@ if [[ $PLATFORM == 'Darwin' ]]; then
 
     SOUND_NAME='Ping'
 
-    # shellcheck disable=SC2086
-    osascript -e 'display notification "'$MESSAGE'" with title "'$TITLE'" sound name "'$SOUND_NAME'"'
+    osascript -e 'display notification "'"$MESSAGE"'" with title "'"$TITLE"'" sound name "'"$SOUND_NAME"'"'
 
 elif [[ $PLATFORM == 'Linux' ]]; then
     notify-send "$TITLE" "$MESSAGE"
