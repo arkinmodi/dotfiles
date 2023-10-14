@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # History Configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -19,14 +21,18 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
-# Completions
-autoload -U compaudit compinit
+# Static Completions
+autoload -Uz compinit
+[[ -d $ZDOTDIR/completions/ ]] && fpath+="$ZDOTDIR/completions/"
+compinit
+
 zmodload zsh/complist
 
-setopt MENU_COMPLETE
 setopt AUTO_LIST
-setopt nocaseglob
+setopt AUTO_PARAM_SLASH
+setopt MENU_COMPLETE
 setopt globdots
+setopt nocaseglob
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
@@ -35,27 +41,22 @@ zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
+zstyle ':completion:*' squeeze-slashes true
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
-[[ -d $ZDOTDIR/completions/ ]] && fpath+="$ZDOTDIR/completions/"
+# Homebrew
+[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-
+# Runtime Generated Completions
 source "$ZDOTDIR/.zsh_completions"
 
 # Plugins
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-
-# Homebrew
-[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Environment Variables
 source "$ZDOTDIR/.zshenv"

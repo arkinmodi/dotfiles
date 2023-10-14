@@ -70,7 +70,7 @@ def file(
 
     url = _get_repo_url(remote)
     if url.endswith('/wiki'):
-        url += f'/{filename.removesuffix(".md")}'
+        url += f'/{filename.removesuffix('.md')}'
     else:
         url += f'/blob/{branch_name}/{filename}'
 
