@@ -8,7 +8,7 @@ import subprocess
 def _prompt_yes_no(question: str, default: str | None = None) -> bool:
     opts = {'y': True, 'ye': True, 'yes': True, 'n': False, 'no': False}
 
-    if not default:
+    if default is not None:
         prompt = '[y/n]'
     elif default == 'yes':
         prompt = '[Y/n]'
@@ -124,7 +124,7 @@ def main() -> int:
         encoding='UTF-8',
     )
     local_branches = {hr[1:-1] for hr in head_refs.stdout.splitlines()}
-    victims = sorted(local_branches.difference(upstream_branches))
+    victims = sorted(local_branches - upstream_branches)
 
     if not args.yes and args.pick and len(victims):
         victims = [
@@ -152,7 +152,7 @@ def main() -> int:
         op = ['git', 'branch', '--delete']
         if args.force:
             op.append('--force')
-        git_delete = subprocess.run([*op, *victims])
+        git_delete = subprocess.run(op + victims)
 
         if git_delete.returncode != 0:
             print('\nNot all branches were deleted. Try running with --force.')

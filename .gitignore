@@ -1,5 +1,4 @@
 *.DS_Store
 *.zcompdump
 *.zshenv_secrets
-nvim/.config/nvim/.undo/
 zsh/.config/zsh/.zsh_sessions/
