@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+
+# 1Password Secret Reference Format
+# op://<vault-name>/<item-name>[/<section-name>]/<field-name>
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--output-file',
+        default='.env',
+        help='file to write to (defaults to .env)',
+    )
+    parser.add_argument('name', nargs=1)
+    args = parser.parse_args()
+
+    op_item_info_json = subprocess.run(
+        ['op', 'item', 'get', args.name[0], '--format', 'json'],
+        capture_output=True,
+    )
+    op_item_info = json.loads(op_item_info_json.stdout)
+
+    env_values = {}
+    if 'fields' in op_item_info:
+        for item in op_item_info['fields']:
+            if (
+                'section' in item and
+                'label' in item['section'] and
+                item['section']['label'] == 'Environment Variables' and
+                'label' in item and
+                'reference' in item
+            ):
+                env_values[item['label']] = item['reference']
+
+    with open(args.output_file, 'a') as f:
+        for key, value in env_values.items():
+            f.write(f'{key}="{value}"\n')
+
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
