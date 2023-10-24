@@ -58,8 +58,7 @@ source "$ZDOTDIR/.zsh_completions"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
-# Environment Variables
 source "$ZDOTDIR/.zshenv"
-
-# Aliases
 source "$ZDOTDIR/.zsh_aliases"
+
+command -v 'direnv' &> /dev/null && source <(direnv hook zsh)

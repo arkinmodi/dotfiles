@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-command -v 'direnv' &> /dev/null && source <(direnv hook zsh)
 command -v 'kubectl' &> /dev/null && source <(kubectl completion zsh)
-command -v 'op' &> /dev/null && source <(op completion zsh)
+command -v 'op' &> /dev/null && source <(op completion zsh) && compdef _op op
 command -v 'podman' &> /dev/null && source <(podman completion zsh)
