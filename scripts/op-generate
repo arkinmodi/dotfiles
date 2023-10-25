@@ -14,31 +14,36 @@ def main() -> int:
     parser.add_argument(
         '--output-file',
         default='.env',
-        help='file to write to (defaults to .env)',
+        help='file to write to (defaults to ".env")',
     )
-    parser.add_argument('name', nargs=1)
+    parser.add_argument(
+        '--section-name',
+        default='Environment Variables',
+        help='1password section name (defaults to "Environment Variables")',
+    )
+    parser.add_argument('item_name', nargs=1)
     args = parser.parse_args()
 
     op_item_info_json = subprocess.run(
-        ['op', 'item', 'get', args.name[0], '--format', 'json'],
+        ['op', 'item', 'get', args.item_name[0], '--format', 'json'],
         capture_output=True,
     )
     op_item_info = json.loads(op_item_info_json.stdout)
 
-    env_values = {}
+    envs = {}
     if 'fields' in op_item_info:
-        for item in op_item_info['fields']:
+        for field in op_item_info['fields']:
             if (
-                'section' in item and
-                'label' in item['section'] and
-                item['section']['label'] == 'Environment Variables' and
-                'label' in item and
-                'reference' in item
+                'section' in field and
+                'label' in field['section'] and
+                field['section']['label'] == args.section_name and
+                'label' in field and
+                'reference' in field
             ):
-                env_values[item['label']] = item['reference']
+                envs[field['label']] = field['reference']
 
     with open(args.output_file, 'a') as f:
-        for key, value in env_values.items():
+        for key, value in envs.items():
             f.write(f'{key}="{value}"\n')
 
     return 0

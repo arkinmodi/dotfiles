@@ -62,3 +62,5 @@ source "$ZDOTDIR/.zshenv"
 source "$ZDOTDIR/.zsh_aliases"
 
 command -v 'direnv' &> /dev/null && source <(direnv hook zsh)
+
+true # reset any error codes
