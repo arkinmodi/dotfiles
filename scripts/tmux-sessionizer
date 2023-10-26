@@ -28,7 +28,7 @@ else
             --disabled-fields churn authors contributors \
             --no-title \
             2> /dev/null \
-            || ls -la --color=always {}
+            || ls -lah --color=always {}
         ' \
         --preview-window 'up'
     )
