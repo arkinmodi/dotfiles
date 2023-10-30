@@ -4,6 +4,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
+			local colours = require("ayu.colors")
+			colours.generate()
 			require("ayu").setup({
 				mirage = false,
 				overrides = {
@@ -16,6 +18,9 @@ return {
 					},
 					NormalFloat = {
 						bg = "none", -- make transparent
+					},
+					StatusLine = {
+						fg = colours.keyword,
 					},
 					Visual = {
 						bg = "#36454F", -- Charcoal Grey

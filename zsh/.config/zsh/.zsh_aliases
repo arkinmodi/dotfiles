@@ -8,6 +8,7 @@ alias la="ls -lAh"
 alias ll="ls -lh"
 alias lsa="ls -lah"
 
+alias alert="notification"
 alias tms="tmux-sessionizer"
 
 command -v awshelp &> /dev/null && alias aws="awshelp"
