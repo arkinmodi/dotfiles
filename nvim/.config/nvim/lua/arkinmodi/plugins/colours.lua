@@ -23,7 +23,7 @@ return {
 						fg = colours.keyword,
 					},
 					Visual = {
-						bg = "#36454F", -- Charcoal Grey
+						bg = colours.gutter_active,
 					},
 				},
 			})
