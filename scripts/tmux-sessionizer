@@ -23,10 +23,11 @@ else
         | fzf \
         --preview '
             onefetch {} \
-            --type programming markup prose data \
-            --exclude package-lock.json \
             --disabled-fields churn authors contributors \
+            --exclude package-lock.json \
+            --include-hidden \
             --no-title \
+            --type programming markup prose data \
             2> /dev/null \
             || ls -lah --color=always {}
         ' \
