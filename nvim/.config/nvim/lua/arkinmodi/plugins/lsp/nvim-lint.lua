@@ -4,7 +4,7 @@ return {
 	config = function()
 		local nvim_lint = require("lint")
 		nvim_lint.linters_by_ft = {
-			python = { "flake8", "mypy" },
+			python = { "flake8" },
 			yaml = { "yamllint" },
 		}
 
