@@ -10,3 +10,6 @@
 	path = zsh/.config/zsh/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "work"]
+	path = work
+	url = git@github.com:arkinmodi/dotfiles-work.git
