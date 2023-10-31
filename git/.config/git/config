@@ -46,3 +46,6 @@
 
 [fetch]
   prune = true
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.cas.mcmaster.ca/**"]
+  path = ./../../../work/git/mcmaster-university.inc
