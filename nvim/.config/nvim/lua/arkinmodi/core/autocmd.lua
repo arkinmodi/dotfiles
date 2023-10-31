@@ -84,10 +84,5 @@ autocmd("LspAttach", {
 			vim.lsp.buf.code_action,
 			{ buffer = ev.buf, desc = "vim.lsp.buf.code_action" }
 		)
-
-		vim.keymap.set("n", "<leader>ff", function()
-			-- TODO: Add logic to run cli formatter based on file type (to replace null_ls)
-			vim.lsp.buf.format({ async = false })
-		end, { buffer = ev.buf, desc = "vim.lsp.buf.format" })
 	end,
 })
