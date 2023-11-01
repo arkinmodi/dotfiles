@@ -68,3 +68,36 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "vim.diagnostic.got
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "vim.diagnostic.goto_next" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float" })
 vim.diagnostic.config({ virtual_text = true })
+
+-- LSP
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "vim.lsp.buf.rename" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "vim.lsp.buf.hover" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "vim.lsp.buf.declaration" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "vim.lsp.buf.definition" })
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "vim.lsp.buf.implementation" })
+vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { desc = "vim.lsp.buf.type_definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "vim.lsp.buf.references," })
+vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "vim.lsp.buf.signature_help" })
+vim.keymap.set(
+	{ "n", "v" },
+	"<leader>ca",
+	vim.lsp.buf.code_action,
+	{ desc = "vim.lsp.buf.code_action" }
+)
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = opts.border
+		or {
+			{ "┌", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "┐", "FloatBorder" },
+			{ "│", "FloatBorder" },
+			{ "┘", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "└", "FloatBorder" },
+			{ "│", "FloatBorder" },
+		}
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
