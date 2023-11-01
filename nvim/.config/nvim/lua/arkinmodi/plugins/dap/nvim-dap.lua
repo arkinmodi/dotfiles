@@ -8,8 +8,13 @@ return {
 	keys = { "<F1>", "<F4>", "<F5>", "<F6>", "<F7>", "<F8>", "<F9>" },
 	config = function()
 		local dap = require("dap")
+		local dapui = require("dapui")
 
-		vim.keymap.set("n", "<F1>", require("dapui").toggle, { desc = 'require("dapui").toggle' })
+		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+		dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+		vim.keymap.set("n", "<F1>", dapui.toggle, { desc = 'require("dapui").toggle' })
 		vim.keymap.set(
 			"n",
 			"<F4>",
