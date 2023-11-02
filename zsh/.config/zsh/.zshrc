@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+bindkey -e # force emacs bindings (ignore $EDITOR env)
+
 # History Configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -7,7 +9,6 @@ SAVEHIST=5000
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
-
 
 # Prompt
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"

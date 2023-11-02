@@ -9,8 +9,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 [[ -f "$HOME/.config/zsh/.zshenv_secrets" ]] \
     && source "$HOME/.config/zsh/.zshenv_secrets"
 
-# setting EDITOR will change tmux bindings
-# export EDITOR="nvim"
+export EDITOR="nvim"
 
 # export BROWSER=
 
