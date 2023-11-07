@@ -47,7 +47,7 @@ vim.opt.timeoutlen = 3000
 -- Show Whitespace
 -- vim.opt.listchars="eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
 -- ░ ▒ ▓ █
-vim.opt.listchars = "tab:  ,trail:▓"
+vim.opt.listchars = "tab:» ,trail:▓"
 vim.opt.list = true
 
 -- Disable Language Providers
@@ -55,3 +55,7 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
+
+-- copy to clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
