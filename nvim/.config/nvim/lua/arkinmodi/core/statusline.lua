@@ -21,9 +21,8 @@ function StatuslineLspClients()
 	for _, client in pairs(clients) do
 		table.insert(client_names, client["name"])
 	end
-	local concatenated_string = table.concat(client_names, ", ")
-	if concatenated_string == "" then
+	if #client_names == 0 then
 		return "[No LSP]"
 	end
-	return concatenated_string
+	return table.concat(client_names, " ")
 end
