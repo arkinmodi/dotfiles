@@ -1,13 +1,14 @@
 vim.opt.statusline = string.format(
-	"[%s] %s %s %s %s%s %s/%s | %s | %s %s %s",
+	"[%s] %s %s %s %s %s %s,%s%s | %s | %s %s %s",
 	"%{get(b:, 'gitsigns_head', 'No Git')}", -- current git HEAD
 	"%f", -- short file name
 	"%m", -- file modified flag
 	"%=", -- right align following items
 	"%h", -- help flag
 	"%r", -- read-only flag
-	"%l", -- current line number
-	"%L", -- total line numbers
+	"%l", -- line number
+	"%c", -- column number
+	"%V", -- virtual column number
 	"%{v:lua.StatuslineLspClients()}", -- attached LSPs
 	"%{strlen(&fenc)?&fenc:'none'}", -- file encoding
 	"%{&ff}", -- file format
