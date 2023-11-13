@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Generate .env files from 1Password"""
 from __future__ import annotations
 
 import argparse

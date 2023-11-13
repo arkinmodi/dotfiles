@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Directly inject environment variables from 1Password into target command"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from typing import NoReturn
+
+if sys.platform == 'win32':
+    def execvpe(_file: str, args: list[str], env: dict[str, str]) -> int:
+        return subprocess.run(args, env=env)
+else:
+    from os import execvpe
+
+
+def main() -> NoReturn:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-i',
+        '--item-name',
+        help='1password item name',
+        required=True,
+    )
+    parser.add_argument(
+        '--no-masking',
+        action='store_true',
+        help='adds the "--no-masking" flag to "op run"',
+    )
+    parser.add_argument(
+        '--section-name',
+        default='Environment Variables',
+        help='1password section name (defaults to "Environment Variables")',
+    )
+    parser.add_argument('command', nargs='+')
+    args = parser.parse_args()
+
+    op_item_info_json = subprocess.run(
+        ['op', 'item', 'get', args.item_name, '--format', 'json'],
+        capture_output=True,
+    )
+    op_item_info = json.loads(op_item_info_json.stdout)
+
+    op_envs = {}
+    if 'fields' in op_item_info:
+        for field in op_item_info['fields']:
+            if (
+                'section' in field and
+                'label' in field['section'] and
+                field['section']['label'] == args.section_name and
+                'label' in field and
+                'reference' in field
+            ):
+                op_envs[field['label']] = field['reference']
+
+    no_masking = ['--no-masking'] if args.no_masking else []
+    cmd = ['op', 'run', *no_masking, '--', *args.command]
+    new_env = os.environ.copy() | op_envs
+    execvpe(cmd[0], cmd, new_env)
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

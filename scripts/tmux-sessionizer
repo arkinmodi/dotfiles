@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
+# tmux session manager
+
 set -euo pipefail
 
 SEARCH_DIRS=(

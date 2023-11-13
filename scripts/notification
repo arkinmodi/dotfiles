@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
+# Create a system notification
+
 set -euo pipefail
 
 TITLE='Terminal'
