@@ -1,11 +1,10 @@
 vim.opt.statusline = string.format(
-	"[%s] %s %s %s %s %s %s,%s%s | %s | %s %s %s",
-	"%{get(b:, 'gitsigns_head', 'No Git')}", -- current git HEAD
+	"[%s] %s %s %s %s %s,%s%s | %s | %s %s %s",
+	"%{get(b:, 'gitsigns_head', 'No Git HEAD')}", -- current git HEAD
 	"%f", -- short file name
 	"%m", -- file modified flag
-	"%=", -- right align following items
-	"%h", -- help flag
 	"%r", -- read-only flag
+	"%=", -- right align following items
 	"%l", -- line number
 	"%c", -- column number
 	"%V", -- virtual column number

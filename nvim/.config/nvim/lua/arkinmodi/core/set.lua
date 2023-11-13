@@ -45,9 +45,16 @@ vim.opt.cursorlineopt = "number,screenline"
 vim.opt.timeoutlen = 3000
 
 -- Show Whitespace
--- vim.opt.listchars="eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
 -- ░ ▒ ▓ █
-vim.opt.listchars = "tab:» ,trail:▓"
+vim.opt.listchars = table.concat({
+	"lead:·",
+	"tab:» ",
+	"trail:▓",
+	-- "eol:¬",
+	-- "extends:>",
+	-- "precedes:<",
+	-- "space:·",
+}, ",")
 vim.opt.list = true
 
 -- Disable Language Providers
