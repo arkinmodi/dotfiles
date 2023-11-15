@@ -9,22 +9,11 @@ return {
 			require("ayu").setup({
 				mirage = false,
 				overrides = {
-					IncSearch = {
-						bg = "#FFFFFF", -- White
-						fg = "#000000", -- Black
-					},
-					Normal = {
-						bg = "none", -- make transparent
-					},
-					NormalFloat = {
-						bg = "none", -- make transparent
-					},
-					StatusLine = {
-						fg = colours.keyword,
-					},
-					Visual = {
-						bg = colours.gutter_active,
-					},
+					GitSignsCurrentLineBlame = { fg = colours.guide_active },
+					IblScope = { fg = colours.guide_active },
+					IncSearch = { bg = colours.lsp_parameter, fg = colours.selection_inactive },
+					StatusLine = { fg = colours.keyword },
+					Visual = { bg = colours.selection_bg },
 				},
 			})
 			vim.cmd.colorscheme("ayu")

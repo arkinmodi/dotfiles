@@ -47,13 +47,9 @@ vim.opt.timeoutlen = 3000
 -- Show Whitespace
 -- ░ ▒ ▓ █
 vim.opt.listchars = table.concat({
-	"lead:·",
+	"space:·",
 	"tab:» ",
 	"trail:▓",
-	-- "eol:¬",
-	-- "extends:>",
-	-- "precedes:<",
-	-- "space:·",
 }, ",")
 vim.opt.list = true
 
@@ -62,3 +58,5 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
+
+vim.g.splitright = true
