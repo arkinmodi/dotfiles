@@ -48,7 +48,7 @@ if [[ ! -v TMUX ]]; then
     tmux new-session -A -c "$dest_dir" -s "$dest_name"
     exit 0
 
-elif ! tmux has-session -t "$dest_name" &> /dev/null; then
+elif ! tmux has-session -t="$dest_name" &> /dev/null; then
     tmux new-session -d -c "$dest_dir" -s "$dest_name"
 fi
 
