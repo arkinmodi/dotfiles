@@ -12,7 +12,7 @@ return {
 					GitSignsCurrentLineBlame = { fg = colours.guide_active },
 					IblScope = { fg = colours.guide_active },
 					IncSearch = { bg = colours.lsp_parameter, fg = colours.selection_inactive },
-					StatusLine = { fg = colours.keyword },
+					StatusLine = { bg = colours.panel_bg, fg = colours.keyword },
 					Visual = { bg = colours.selection_bg },
 				},
 			})
