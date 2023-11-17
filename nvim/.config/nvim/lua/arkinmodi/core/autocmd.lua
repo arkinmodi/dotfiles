@@ -22,6 +22,30 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
+-- Auto-Adjusting Indentation Guides
+-- https://www.reddit.com/r/neovim/comments/17aponn/i_feel_like_leadmultispace_deserves_more_attention
+local function update_lead()
+	local lcs = vim.opt_local.listchars:get()
+	local space = vim.fn.str2list(lcs.multispace or lcs.space)
+	local lead = { vim.fn.char2nr("│") }
+	for i = 1, vim.bo.tabstop - 1 do
+		lead[#lead + 1] = space[i % #space + 1]
+	end
+	vim.opt_local.listchars:append({ leadmultispace = vim.fn.list2str(lead) })
+end
+
+vim.api.nvim_create_autocmd("OptionSet", {
+	group = vim.api.nvim_create_augroup("UpdateLeadMultiSpace", { clear = true }),
+	pattern = { "listchars", "tabstop", "filetype" },
+	callback = update_lead,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = vim.api.nvim_create_augroup("UpdateLeadMultiSpace", { clear = true }),
+	once = true,
+	callback = update_lead,
+})
+
 -- LSP Keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),

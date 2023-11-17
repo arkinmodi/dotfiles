@@ -40,17 +40,13 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "81"
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number,screenline"
+vim.opt.cursorlineopt = { "number", "screenline" }
 
 vim.opt.timeoutlen = 3000
 
 -- Show Whitespace
 -- ░ ▒ ▓ █
-vim.opt.listchars = table.concat({
-	"space:·",
-	"tab:» ",
-	"trail:▓",
-}, ",")
+vim.opt.listchars = { space = "·", tab = "» ", trail = "▓" }
 vim.opt.list = true
 
 -- Disable Language Providers
