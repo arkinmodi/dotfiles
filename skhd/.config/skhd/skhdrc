@@ -4,6 +4,9 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
+# focus parent
+alt - a : yabai -m window --focus first
+
 # swap managed window
 shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
@@ -17,7 +20,7 @@ shift + alt + ctrl - k : yabai -m window --warp north
 shift + alt + ctrl - l : yabai -m window --warp east
 
 # rotate managed windows
-alt - w : yabai -m space --rotate 270
+alt - r : yabai -m space --rotate 270
 
 # reset size of windows
 alt - e : yabai -m space --balance

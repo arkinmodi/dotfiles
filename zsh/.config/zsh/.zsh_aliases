@@ -1,26 +1,29 @@
 #!/usr/bin/env zsh
 
-alias grep="grep --color=auto"
+alias grep='grep --color=auto'
 
-alias ls="ls --color=auto"
-alias l="ls -lah"
-alias la="ls -lAh"
-alias ll="ls -lh"
-alias lsa="ls -lah"
+alias ls='ls --color=auto'
+alias l='ls -lah'
+alias la='ls -lAh'
+alias ll='ls -lh'
+alias lsa='ls -lah'
 
-alias alert="notification"
-alias tms="tmux-sessionizer"
+alias alert='notification'
+alias tms='tmux-sessionizer'
 
-command -v awshelp &> /dev/null && alias aws="awshelp"
-command -v bat &> /dev/null && alias cat="bat --paging=never"
-command -v gfind &> /dev/null && alias find="gfind"
-command -v glocate &> /dev/null && alias locate="glocate"
-command -v gsed &> /dev/null && alias sed="gsed"
-command -v gtar &> /dev/null && alias tar="gtar"
-command -v gupdatedb &> /dev/null && alias updatedb="gupdatedb"
-command -v gxargs &> /dev/null && alias xargs="gxargs"
-command -v nvim &> /dev/null && alias vi="nvim" && alias vim="nvim"
-command -v podman &> /dev/null && alias docker="podman"
+alias java-inspect='java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=\*:5005'
+alias jdb='rlwrap jdb'
+
+command -v awshelp &> /dev/null && alias aws='awshelp'
+command -v bat &> /dev/null && alias cat='bat --paging=never'
+command -v gfind &> /dev/null && alias find='gfind'
+command -v glocate &> /dev/null && alias locate='glocate'
+command -v gsed &> /dev/null && alias sed='gsed'
+command -v gtar &> /dev/null && alias tar='gtar'
+command -v gupdatedb &> /dev/null && alias updatedb='gupdatedb'
+command -v gxargs &> /dev/null && alias xargs='gxargs'
+command -v nvim &> /dev/null && alias vi='nvim' && alias vim='nvim'
+command -v podman &> /dev/null && alias docker='podman'
 
 if [[ $(uname) == 'Darwin' ]]; then
     [ -e '/Applications/Firefox.app/Contents/MacOS/firefox' ] \
@@ -33,4 +36,4 @@ if [[ $(uname) == 'Darwin' ]]; then
         && alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 fi
 
-bindkey -s ^t "tmux-sessionizer\n"
+bindkey -s ^t 'tmux-sessionizer\n'
