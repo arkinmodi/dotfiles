@@ -10,10 +10,18 @@ return {
 				mirage = false,
 				overrides = {
 					GitSignsCurrentLineBlame = { fg = colours.guide_active },
-					IblScope = { fg = colours.guide_active },
 					IncSearch = { bg = colours.lsp_parameter, fg = colours.selection_inactive },
 					StatusLine = { bg = colours.panel_bg, fg = colours.keyword },
 					Visual = { bg = colours.selection_bg },
+
+					-- transparency
+					FoldColumn = { bg = "None" },
+					Folded = { bg = "None" },
+					Normal = { bg = "None" },
+					NormalFloat = { bg = "None" },
+					SignColumn = { bg = "None" },
+					VertSplit = { bg = "None" },
+					WhichKeyFloat = { bg = "None" },
 				},
 			})
 			vim.cmd.colorscheme("ayu")
@@ -23,6 +31,9 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = true,
+		opts = {
+			transparent_background = true,
+		},
 	},
 	{
 		"navarasu/onedark.nvim",
@@ -36,10 +47,16 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		lazy = true,
-		config = true,
+		opts = {
+			disable_background = true,
+			disable_float_background = true,
+		},
 	},
 	{
 		"folke/tokyonight.nvim",
 		lazy = true,
+		opts = {
+			transparent = true,
+		},
 	},
 }

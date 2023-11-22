@@ -12,7 +12,7 @@ window:
   dimensions:
     columns: 110
     lines: 35
-  opacity: 1.00
+  opacity: 0.95
   padding:
     x: 10
     y: 30
