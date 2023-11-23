@@ -63,10 +63,6 @@ return {
 			lspconfig["tailwindcss"].setup({ capabilities = capabilities }) -- Tailwind CSS
 		end
 
-		if vim.fn.executable("astro-ls") == 1 then
-			lspconfig["astro"].setup({ capabilities = capabilities }) -- Astro
-		end
-
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			lspconfig["yamlls"].setup({

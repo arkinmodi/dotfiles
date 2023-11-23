@@ -24,16 +24,16 @@ live_config_reload: true
 font:
   size: 18
   normal:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NFM
     style: Regular
   bold:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NFM
     style: Bold
   italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NFM
     style: Italic
   bold_italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMono NFM
     style: Bold Italic
 
 draw_bold_text_with_bright_colors: true
