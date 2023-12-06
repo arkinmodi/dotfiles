@@ -49,6 +49,10 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+
 # Homebrew
 [ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
