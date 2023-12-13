@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# shellcheck shell=bash
+
+# Needs to be a shell function for `cd` to persist
+git-worktree-switch() {
+if [[ $# -eq 1 ]]; then
+    dest=$1
+else
+    dest=$(
+    git worktree list \
+        | fzf \
+        | sed -E -e 's/\s*(.{7} \[.*\]|\(bare\))$//'
+    )
+fi
+cd "$dest"
+}

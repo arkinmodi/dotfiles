@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+'''Prune git worktrees and associated branches'''
+from __future__ import annotations
+
+import argparse
+import subprocess
+from typing import Literal
+from typing import NamedTuple
+
+
+class Worktree(NamedTuple):
+    path: str
+    branch_ref: str
+
+
+def _prompt_yes_no(
+        question: str,
+        default: Literal['yes', 'no'] | None = None,
+) -> bool:
+    opts = {'y': True, 'ye': True, 'yes': True, 'n': False, 'no': False}
+
+    if default is None:
+        prompt = '[y/n]'
+    elif default == 'yes':
+        prompt = '[Y/n]'
+    elif default == 'no':
+        prompt = '[y/N]'
+    else:
+        raise ValueError(f'Invalid default prompt {default!r}')
+
+    while True:
+        print(f'{question} {prompt} ', end='', flush=True)
+        choice = input().lower()
+        if default and not choice:
+            return opts[default]
+        elif choice in opts:
+            return opts[choice]
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--default-branch',
+        default='main',
+        help='default branch will not be deleted. defaults to "main".',
+    )
+    parser.add_argument(
+        '-f',
+        '--force',
+        action='store_true',
+        help='use git force delete branch and worktree',
+    )
+    parser.add_argument('-n', '--dry-run', action='store_true')
+    parser.add_argument(
+        '-p',
+        '--pick',
+        action='store_true',
+        help='interactively select worktrees to delete',
+    )
+    parser.add_argument(
+        '-b',
+        '--preserve-branches',
+        action='store_true',
+        help='do not delete branches, only worktrees',
+    )
+    parser.add_argument(
+        '-y',
+        '--yes',
+        '--assume-yes',
+        action='store_true',
+        help='assume "yes" as answer to all prompts and run non-interactively',
+    )
+    args = parser.parse_args()
+
+    git_worktrees = subprocess.run(
+        ('git', 'worktree', 'list', '--porcelain'),
+        capture_output=True,
+        encoding='UTF-8',
+    ).stdout
+
+    victims = []
+    for data in git_worktrees.split('\n\n'):
+        if (
+                data == '' or
+                data.endswith('bare') or
+                data.endswith(args.default_branch)
+        ):
+            continue
+
+        path, _, branch = data.splitlines()
+        victims.append(
+            Worktree(path=path.split()[-1], branch_ref=branch.split()[-1]),
+        )
+
+    if not args.yes and args.pick and len(victims):
+        victims = [
+            v
+            for v in sorted(victims, key=lambda wt: wt.branch_ref)
+            if _prompt_yes_no(f'Delete {v}?', default='yes')
+        ]
+        print()
+
+    if len(victims):
+        print(
+            f'Deleting {"branches and " if not args.preserve_branches else ""}'
+            'worktrees:',
+        )
+        for worktree in victims:
+            print(worktree)
+    else:
+        print('Nothing to delete.')
+
+    if (
+        not args.dry_run and
+        len(victims) and
+        (
+            args.yes or
+            _prompt_yes_no('Do you want to continue?')
+        )
+    ):
+        op = ['git', 'worktree', 'remove']
+        if args.force:
+            op.append('--force')
+
+        ret = 0
+        for worktree in victims:
+            ret |= subprocess.run((*op, worktree.path)).returncode
+
+        op = ['git', 'branch', '--delete']
+        if args.force:
+            op.append('--force')
+
+        if not args.preserve_branches:
+            ret |= subprocess.run(
+                op + [wt.branch_ref.split('/')[-1] for wt in victims],
+            ).returncode
+
+        if ret != 0:
+            print(
+                '\nNot all deletes were successful. Try running with '
+                '--force.',
+            )
+
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

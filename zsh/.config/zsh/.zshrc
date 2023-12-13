@@ -65,6 +65,7 @@ source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.
 
 source "$ZDOTDIR/.zshenv"
 source "$ZDOTDIR/.zsh_aliases"
+source "$ZDOTDIR/.zsh_functions"
 
 command -v 'direnv' &> /dev/null && source <(direnv hook zsh)
 
