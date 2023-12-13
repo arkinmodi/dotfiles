@@ -12,5 +12,5 @@ else
         | sed -E -e 's/\s*(.{7} \[.*\]|\(bare\))$//'
     )
 fi
-cd "$dest"
+cd "$dest" || return
 }
