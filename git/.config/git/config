@@ -36,6 +36,7 @@
   opr = open pr
   or = open repo
   pb = prune-branches
+  pw = prune-worktrees
   s = status
   sw = switch
   swc = switch origin/main -c
