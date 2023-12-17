@@ -1,0 +1,53 @@
+return {
+	"mfussenegger/nvim-jdtls",
+	ft = "java",
+	config = function()
+		local system = "unix"
+		if vim.fn.has("macunix") then
+			system = "mac"
+		end
+
+		local arch = ""
+		if vim.fn.system("uname -p") == "arm\n" then
+			arch = "_arm"
+		end
+
+		local jdtls_home = vim.fn.glob("~/opt/java/jdt-language-server-*")
+		local jar = vim.fn.glob(jdtls_home .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+		local configuration = vim.fn.glob(jdtls_home .. "/config_" .. system .. arch)
+
+		local cache = vim.fn.stdpath("cache")
+		local root_dir_path = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
+		local project_name = vim.fn.fnamemodify(root_dir_path, ":p:h:t")
+		local data = cache .. "/jdtls/workspace/" .. project_name
+
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("ConfigJDTLS", { clear = true }),
+			pattern = "java",
+			callback = function()
+				require("jdtls").start_or_attach({
+					cmd = {
+						"java",
+						"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+						"-Dosgi.bundles.defaultStartLevel=4",
+						"-Declipse.product=org.eclipse.jdt.ls.core.product",
+						"-Dlog.protocol=true",
+						"-Dlog.level=ALL",
+						"-Xmx1g",
+						"--add-modules=ALL-SYSTEM",
+						"--add-opens",
+						"java.base/java.util=ALL-UNNAMED",
+						"--add-opens",
+						"java.base/java.lang=ALL-UNNAMED",
+						"-jar",
+						jar,
+						"-configuration",
+						configuration,
+						"-data",
+						data,
+					},
+				})
+			end,
+		})
+	end,
+}

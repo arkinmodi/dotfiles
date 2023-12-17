@@ -31,10 +31,6 @@ return {
 			lspconfig["rust_analyzer"].setup({ capabilities = capabilities }) -- Rust
 		end
 
-		if vim.fn.executable("jdtls") == 1 then
-			lspconfig["jdtls"].setup({ capabilities = capabilities }) -- Java
-		end
-
 		if vim.fn.executable("gopls") == 1 then
 			lspconfig["gopls"].setup({ capabilities = capabilities }) -- Go
 		end
