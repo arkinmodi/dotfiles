@@ -13,6 +13,11 @@ return {
 		end
 
 		local jdtls_home = vim.fn.glob("~/opt/java/jdt-language-server-*")
+		if jdtls_home == nil or jdtls_home == "" then
+			print("failed to find JDTLS install directory")
+			return
+		end
+
 		local jar = vim.fn.glob(jdtls_home .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 		local configuration = vim.fn.glob(jdtls_home .. "/config_" .. system .. arch)
 
@@ -20,6 +25,19 @@ return {
 		local root_dir_path = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
 		local project_name = vim.fn.fnamemodify(root_dir_path, ":p:h:t")
 		local data = cache .. "/jdtls/workspace/" .. project_name
+
+		local lombok_java_agent = "-javaagent:" .. vim.fn.glob("~/opt/java/lombok.jar")
+
+		local bundles = {
+			vim.fn.glob(
+				"~/opt/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
+				1
+			),
+		}
+		vim.list_extend(
+			bundles,
+			vim.split(vim.fn.glob("~/opt/java/vscode-java-test/server/*.jar", 1), "\n")
+		)
 
 		vim.api.nvim_create_autocmd("FileType", {
 			group = vim.api.nvim_create_augroup("ConfigJDTLS", { clear = true }),
@@ -39,12 +57,17 @@ return {
 						"java.base/java.util=ALL-UNNAMED",
 						"--add-opens",
 						"java.base/java.lang=ALL-UNNAMED",
+						lombok_java_agent,
 						"-jar",
 						jar,
 						"-configuration",
 						configuration,
 						"-data",
 						data,
+					},
+
+					init_options = {
+						bundles = bundles,
 					},
 				})
 			end,
