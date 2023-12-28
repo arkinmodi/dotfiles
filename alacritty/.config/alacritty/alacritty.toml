@@ -29,16 +29,16 @@ style = "Regular"
 
 [keyboard]
 bindings = [
-  {key = "Space", mods = "Alt", chars = " "},
-  {key = "Back", mods = "Super", chars = "\u0015"}, # delete word/line
-  {key = "Left", mods = "Alt", chars = "\u001Bb"}, # one word left
-  {key = "Right", mods = "Alt", chars = "\u001Bf"}, # one word right
-  {key = "Left", mods = "Command", chars = "\u001BOH", mode = "AppCursor"}, # Home
-  {key = "Right", mods = "Command", chars = "\u001BOF", mode = "AppCursor"}, # End
-  {key = "J", mods = "Alt", chars = "\u001Bj"},
-  {key = "K", mods = "Alt", chars = "\u001Bk"},
-  {key = "H", mods = "Alt", chars = "\u001Bh"},
-  {key = "L", mods = "Alt", chars = "\u001Bl"}
+  {chars = " ", key = "Space", mods = "Alt"},
+  {chars = "\u0015", key = "Back", mods = "Super"}, # delete word/line
+  {chars = "\u001BOF", key = "Right", mode = "AppCursor", mods = "Command"}, # End
+  {chars = "\u001BOH", key = "Left", mode = "AppCursor", mods = "Command"}, # Home
+  {chars = "\u001Bb", key = "Left", mods = "Alt"}, # one word left
+  {chars = "\u001Bf", key = "Right", mods = "Alt"}, # one word right
+  {chars = "\u001Bh", key = "H", mods = "Alt"},
+  {chars = "\u001Bj", key = "J", mods = "Alt"},
+  {chars = "\u001Bk", key = "K", mods = "Alt"},
+  {chars = "\u001Bl", key = "L", mods = "Alt"},
 ]
 
 [window]
