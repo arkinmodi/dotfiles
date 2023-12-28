@@ -1,0 +1,23 @@
+# https://github.com/atom/atom/tree/master/packages/one-dark-syntax
+
+[colors.cursor]
+cursor = "#528bff" # syntax-cursor-color
+text = "CellBackground"
+
+[colors.normal]
+black = "#5c6370" # mono-3
+blue = "#61afef"
+cyan = "#56b6c2"
+green = "#92e364"
+magenta = "#c678dd"
+red = "#e06c75" # red 1
+white = "#828997" # mono-2
+yellow = "#e5c07b" # orange 2
+
+[colors.primary]
+background = "#282c34"
+foreground = "#abb2bf"
+
+[colors.selection]
+background = "#3e4451" # syntax-selection-color
+text = "CellForeground"

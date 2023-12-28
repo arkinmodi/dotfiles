@@ -1,0 +1,46 @@
+# https://github.com/Roboron3042/Cyberpunk-Neon
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x1c61c2"
+blue = "0x00ff00"
+cyan = "0x0abdc6"
+green = "0xd300c4"
+magenta = "0x711c91"
+red = "0xff0000"
+white = "0xd7d7d5"
+yellow = "0xf57800"
+
+# Colours that should be used to draw the terminal cursor. If these are unset,
+# the cursor colour will be the inverse of the cell colour.
+# [colors.cursor]
+# text = "0x2e2e2d"
+# text = "0x000000"
+# cursor = "0xffffff"
+[colors.cursor]
+
+[colors.dim]
+black = "0x1c61c2"
+blue = "0x123e7c"
+cyan = "0x0abdc6"
+green = "0xd300c4"
+magenta = "0x711c91"
+red = "0xff0000"
+white = "0xd7d7d5"
+yellow = "0xf57800"
+
+[colors.normal]
+black = "0x123e7c"
+blue = "0x123e7c"
+cyan = "0x0abdc6"
+green = "0xd300c4"
+magenta = "0x711c91"
+red = "0xff0000"
+white = "0xd7d7d5"
+yellow = "0xf57800"
+
+[colors.primary]
+background = "0x000b1e"
+foreground = "0x0abdc6"

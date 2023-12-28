@@ -3,3 +3,4 @@
 *.zshenv_secrets
 __pycache__
 zsh/.config/zsh/.zsh_sessions/
+node_modules
