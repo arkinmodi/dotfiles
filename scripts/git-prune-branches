@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import argparse
 import subprocess
+from typing import Literal
 
 
-def _prompt_yes_no(question: str, default: str | None = None) -> bool:
+def _prompt_yes_no(
+        question: str,
+        default: Literal['yes', 'no'] | None = None,
+) -> bool:
     opts = {'y': True, 'ye': True, 'yes': True, 'n': False, 'no': False}
 
     if default is None:
