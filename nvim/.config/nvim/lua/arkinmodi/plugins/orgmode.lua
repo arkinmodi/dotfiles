@@ -7,6 +7,8 @@ return {
 	ft = "org",
 	config = function()
 		require("orgmode").setup_ts_grammar()
-		require("orgmode").setup()
+		require("orgmode").setup({
+			org_startup_folded = "showeverything",
+		})
 	end,
 }

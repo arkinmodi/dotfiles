@@ -51,7 +51,8 @@ bindkey -M menuselect 'l' vi-forward-char
 
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^X^e' edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # Homebrew
 [ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
