@@ -50,3 +50,9 @@
 
 [includeIf "hasconfig:remote.*.url:https://gitlab.cas.mcmaster.ca/**"]
   path = ./../../../work/git/mcmaster-university.inc
+
+[includeIf "hasconfig:remote.*.url:https://github.ibm.com/**"]
+  path = ./../../../work/git/ibm.inc
+
+[includeIf "hasconfig:remote.*.url:git@github.ibm.com:*/**"]
+  path = ./../../../work/git/ibm.inc
