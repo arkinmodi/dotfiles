@@ -28,6 +28,20 @@ return {
 
 		local lombok_java_agent = "-javaagent:" .. vim.fn.glob("~/opt/java/lombok.jar")
 
+		local runtimes = {}
+		if os.getenv("JDK8") then
+			table.insert(runtimes, { name = "JavaSE-1.8", path = os.getenv("JDK8") })
+		end
+		if os.getenv("JDK11") then
+			table.insert(runtimes, { name = "JavaSE-11", path = os.getenv("JDK11") })
+		end
+		if os.getenv("JDK17") then
+			table.insert(runtimes, { name = "JavaSE-17", path = os.getenv("JDK17") })
+		end
+		if os.getenv("JDK21") then
+			table.insert(runtimes, { name = "JavaSE-21", path = os.getenv("JDK21") })
+		end
+
 		local bundles = {
 			vim.fn.glob(
 				"~/opt/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
@@ -64,6 +78,14 @@ return {
 						configuration,
 						"-data",
 						data,
+					},
+
+					settings = {
+						java = {
+							configuration = {
+								runtimes = runtimes,
+							},
+						},
 					},
 
 					init_options = {
