@@ -17,16 +17,16 @@ export EDITOR="nvim"
 export PATH="$HOME/bin:$PATH"
 
 # Java
-[[ -f "$HOME/opt/java/java-21.jdk"]] \
+[[ -f "$HOME/opt/java/java-21.jdk" ]] \
     && export JDK21="$HOME/opt/java/java-21.jdk"
 
-[[ -f "$HOME/opt/java/java-17.jdk"]] \
+[[ -f "$HOME/opt/java/java-17.jdk" ]] \
     && export JDK17="$HOME/opt/java/java-17.jdk"
 
-[[ -f "$HOME/opt/java/java-11.jdk"]] \
+[[ -f "$HOME/opt/java/java-11.jdk" ]] \
     && export JDK11="$HOME/opt/java/java-11.jdk"
 
-[[ -f "$HOME/opt/java/java-8.jdk"]] \
+[[ -f "$HOME/opt/java/java-8.jdk" ]] \
     && export JDK8="$HOME/opt/java/java-8.jdk"
 
 readlink "$(which java)" >& /dev/null \
