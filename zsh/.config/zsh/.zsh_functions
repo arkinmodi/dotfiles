@@ -9,7 +9,7 @@ else
     dest=$(
     git worktree list \
         | fzf \
-        | sed -E -e 's/\s*(.{7} \[.*\]|\(bare\))$//'
+        | sed -E -e 's/\s*\s(.* \[.*\]|\(bare\))$//'
     )
 fi
 cd "$dest" || return
