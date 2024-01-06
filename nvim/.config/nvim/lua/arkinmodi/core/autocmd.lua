@@ -91,8 +91,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			{ buffer = ev.buf, desc = "vim.lsp.buf.references," }
 		)
 		vim.keymap.set(
-			"n",
-			"gs",
+			{ "i", "n" },
+			"<C-h>",
 			vim.lsp.buf.signature_help,
 			{ buffer = ev.buf, desc = "vim.lsp.buf.signature_help" }
 		)

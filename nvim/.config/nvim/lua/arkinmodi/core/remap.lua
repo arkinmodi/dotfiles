@@ -70,7 +70,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "vim.diagno
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "vim.diagnostic.goto_prev" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "vim.diagnostic.goto_next" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float" })
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+	update_in_insert = true,
+	float = { focusable = false, source = true },
+})
 
 -- LSP
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
