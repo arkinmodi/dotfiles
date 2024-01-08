@@ -17,17 +17,17 @@ export EDITOR="nvim"
 export PATH="$HOME/bin:$PATH"
 
 # Java
-[[ -d "$HOME/opt/java/java-21.jdk" ]] \
-    && export JDK21="$HOME/opt/java/java-21.jdk"
+[[ -d "$HOME/opt/java/java-21.jdk/Contents/Home" ]] \
+    && export JDK21="$HOME/opt/java/java-21.jdk/Contents/Home"
 
-[[ -d "$HOME/opt/java/java-17.jdk" ]] \
-    && export JDK17="$HOME/opt/java/java-17.jdk"
+[[ -d "$HOME/opt/java/java-17.jdk/Contents/Home" ]] \
+    && export JDK17="$HOME/opt/java/java-17.jdk/Contents/Home"
 
-[[ -d "$HOME/opt/java/java-11.jdk" ]] \
-    && export JDK11="$HOME/opt/java/java-11.jdk"
+[[ -d "$HOME/opt/java/java-11.jdk/Contents/Home" ]] \
+    && export JDK11="$HOME/opt/java/java-11.jdk/Contents/Home"
 
-[[ -d "$HOME/opt/java/java-8.jdk" ]] \
-    && export JDK8="$HOME/opt/java/java-8.jdk"
+[[ -d "$HOME/opt/java/java-8.jdk/Contents/Home" ]] \
+    && export JDK8="$HOME/opt/java/java-8.jdk/Contents/Home"
 
 readlink "$(which java)" >& /dev/null \
     && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
