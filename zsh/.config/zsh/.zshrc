@@ -71,7 +71,7 @@ source "$ZDOTDIR/.zsh_functions"
 command -v 'direnv' &> /dev/null && source <(direnv hook zsh)
 
 # Work Stuff
-[[ -f "$DOTFILES/work/zsh/.zshrc" ]] \
+[[ -v WORK && -f "$DOTFILES/work/zsh/.zshrc" ]] \
     && source "$DOTFILES/work/zsh/.zshrc"
 
 true # reset any error codes
