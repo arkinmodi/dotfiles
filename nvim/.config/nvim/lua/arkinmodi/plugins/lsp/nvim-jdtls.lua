@@ -74,6 +74,7 @@ return {
 						lombok_java_agent,
 						"-jar",
 						jar,
+						"--jvm-arg=" .. lombok_java_agent,
 						"-configuration",
 						configuration,
 						"-data",
