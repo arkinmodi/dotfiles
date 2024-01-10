@@ -13,3 +13,4 @@
 [submodule "work"]
 	path = work
 	url = git@github.com:arkinmodi/dotfiles-work.git
+	branch = main
