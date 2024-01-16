@@ -23,7 +23,6 @@ command -v gtar &> /dev/null && alias tar='gtar'
 command -v gupdatedb &> /dev/null && alias updatedb='gupdatedb'
 command -v gxargs &> /dev/null && alias xargs='gxargs'
 command -v nvim &> /dev/null && alias vi='nvim' && alias vim='nvim'
-command -v podman &> /dev/null && alias docker='podman'
 
 if [[ $(uname) == 'Darwin' ]]; then
     [ -e '/Applications/Firefox.app/Contents/MacOS/firefox' ] \
