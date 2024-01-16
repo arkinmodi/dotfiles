@@ -43,7 +43,6 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = { "number", "screenline" }
 
 vim.opt.timeoutlen = 3000
-vim.opt.conceallevel = 1
 
 -- Show Whitespace
 -- ░ ▒ ▓ █

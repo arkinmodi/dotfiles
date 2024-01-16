@@ -104,3 +104,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		)
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("ConcealLevel", { clear = true }),
+	pattern = "org",
+	callback = function()
+		vim.opt_local.conceallevel = 1
+	end,
+})
