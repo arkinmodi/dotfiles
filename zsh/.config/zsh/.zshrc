@@ -72,6 +72,6 @@ command -v 'direnv' &> /dev/null && source <(direnv hook zsh)
 
 # Work Stuff
 [[ -v WORK && -f "$HOME/.dotfiles.work/zsh/.zshrc" ]] \
-    && source "$DOTFILES/work/zsh/.zshrc"
+    && source "$HOME/.dotfiles.work/zsh/.zshrc"
 
 true # reset any error codes
