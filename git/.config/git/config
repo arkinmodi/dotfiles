@@ -16,6 +16,7 @@
 
 [diff]
   tool = default-difftool
+  wsErrorHighlight = all
 
 [difftool "default-difftool"]
   cmd = nvim -d $LOCAL $REMOTE
