@@ -63,17 +63,21 @@ def pull_request(
 def file(
     remote: str,
     branch_name: str | None,
-    filename: str,
+    filepath: str,
     open_browser: bool,
 ) -> int:
     if not branch_name:
         branch_name = _get_branch_name()
+    filename, *line_number = filepath.rsplit(':', maxsplit=1)
 
     url = _get_repo_url(remote)
     if url.endswith('/wiki'):
         url += f'/{filename.removesuffix(".md")}'
     else:
         url += f'/blob/{branch_name}/{filename}'
+
+    if line_number and line_number[0]:
+        url += f'#L{"-L".join(line_number[0].split("-"))}'
 
     print(url)
     if open_browser:
