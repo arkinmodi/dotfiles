@@ -59,6 +59,10 @@ return {
 			lspconfig["tailwindcss"].setup({ capabilities = capabilities }) -- Tailwind CSS
 		end
 
+		if vim.fn.executable("graphql-lsp") == 1 then
+			lspconfig["graphql"].setup({ capabilities = capabilities }) -- Graphql
+		end
+
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			lspconfig["yamlls"].setup({
