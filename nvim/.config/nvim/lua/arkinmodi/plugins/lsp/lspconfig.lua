@@ -63,6 +63,10 @@ return {
 			lspconfig["graphql"].setup({ capabilities = capabilities }) -- Graphql
 		end
 
+		if vim.fn.executable("ansible-language-server") == 1 then
+			lspconfig["ansiblels"].setup({ capabilities = capabilities }) -- Ansible
+		end
+
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			lspconfig["yamlls"].setup({
