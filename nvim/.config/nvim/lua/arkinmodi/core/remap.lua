@@ -49,6 +49,12 @@ vim.keymap.set(
 vim.keymap.set("n", "Q", "<nop>", { desc = "never use ex mode" })
 vim.keymap.set("n", "x", '"_x', { desc = "delete character without yanking" })
 
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy selection to clipboard" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "copy current line to clipboard" })
+
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "delete selection without yanking" })
+vim.keymap.set("n", "<leader>D", '"_D', { desc = "delete current line without yanking" })
+
 -- quick-fix navigation
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "cnext with centered cursor" })
 vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "cpext with centered cursor" })
@@ -62,9 +68,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "un-indent" })
 
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "copy selection to clipboard" })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "copy current line to clipboard" })
-
 -- diagnostics
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "vim.diagnostic.setloclist" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "vim.diagnostic.goto_prev" })
@@ -74,6 +77,11 @@ vim.diagnostic.config({
 	update_in_insert = true,
 	float = { focusable = false, source = true },
 })
+
+-- buffer
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "bnext" })
+vim.keymap.set("n", "[b", "<cmd>bprev<CR>", { desc = "bprev" })
+vim.keymap.set("n", "<leader>bq", "<cmd>bdelete<CR>", { desc = "bdelete" })
 
 -- LSP
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
