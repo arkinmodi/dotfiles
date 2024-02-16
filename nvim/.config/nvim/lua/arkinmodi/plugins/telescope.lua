@@ -14,6 +14,21 @@ return {
 		"<leader>pws",
 	},
 	config = function()
+		local keymaps = {
+			["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+		}
+
+		require("telescope").setup({
+			defaults = {
+				mappings = {
+					i = keymaps,
+					n = keymaps,
+				},
+			},
+		})
+
+		require("telescope").load_extension("fzf")
+
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Telescope find_files" })
 		vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Telescope git_files" })
@@ -29,7 +44,5 @@ return {
 		vim.keymap.set("n", "<leader>pWs", function()
 			builtin.grep_string({ search = vim.fn.expand("<cWORD>") })
 		end, { desc = "Telescope grep WORD under cusor" })
-
-		require("telescope").load_extension("fzf")
 	end,
 }
