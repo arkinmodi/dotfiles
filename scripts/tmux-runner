@@ -31,6 +31,12 @@ while getopts 'hs:' OPTION; do
         s)
             SESSION_DIR="$OPTARG"
             ;;
+
+        *)
+            printUsage
+            exit 1
+            ;;
+
     esac
 done
 shift $((OPTIND-1))
