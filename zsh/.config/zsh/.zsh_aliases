@@ -2,6 +2,11 @@
 
 alias grep='grep --color=auto'
 
+# NOTE: "If the replacement text ends with a space, the next word in the shell
+# input is always eligible for purposes of alias expansion."
+# https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#Aliasing
+alias watch='watch '
+
 alias ls='ls --color=auto'
 alias l='ls -lah'
 alias la='ls -lAh'
