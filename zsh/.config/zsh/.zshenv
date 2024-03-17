@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# shellcheck shell=bash disable=SC1091
 
 export DOTFILES="$HOME/.dotfiles"
 
@@ -29,6 +30,7 @@ export PATH="$HOME/bin:$PATH"
 [[ -d "$HOME/opt/java/java-8.jdk/Contents/Home" ]] \
     && export JDK8="$HOME/opt/java/java-8.jdk/Contents/Home"
 
+# shellcheck disable=SC2155,SC2046
 readlink "$(which java)" >& /dev/null \
     && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
 
@@ -36,6 +38,7 @@ readlink "$(which java)" >& /dev/null \
 export SAM_CLI_TELEMETRY=0
 
 # Rust
+# shellcheck disable=SC2046,SC2086,SC2155
 readlink "$(which rustup)" >& /dev/null \
     && export CARGO_HOME="$(dirname $(dirname $(readlink $(which cargo))))" \
     && export RUSTUP_HOME="$(dirname $CARGO_HOME)/.rustup"
