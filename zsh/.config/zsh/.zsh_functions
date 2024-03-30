@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 
 # Needs to be a shell function for `cd` to persist
-git-worktree-switch() {
+function git-worktree-switch() {
 if [[ $# -eq 1 ]]; then
     dest=$1
 else

@@ -26,7 +26,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source "$HOME/.config/zsh/.p10k.zsh"
+[[ ! -f "$HOME/.config/zsh/.p10k.zsh" ]] || source "$HOME/.config/zsh/.p10k.zsh"
 
 # Static Completions
 autoload -Uz compinit
@@ -59,6 +59,21 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
+
+# Executed before each prompt
+# https://zsh.sourceforge.io/Doc/Release/Functions.html#Hook-Functions
+function precmd() {
+    # [ -d FILE ]           True if FILE exists and is a directory.
+    # [ -x FILE ]           True if FILE exists and is executable.
+    # [ -e FILE ]           True if FILE exists.
+    if [ -d .git ] \
+        && [ ! -x .git/hooks/pre-commit ] \
+        && [ -e .pre-commit-config.yaml ] \
+        && command -v pre-commit &> /dev/null
+    then
+        pre-commit install --hook-type pre-commit
+    fi
+}
 
 # Homebrew
 [ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
