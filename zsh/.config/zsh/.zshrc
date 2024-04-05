@@ -63,9 +63,9 @@ bindkey '^x^e' edit-command-line
 # Executed before each prompt
 # https://zsh.sourceforge.io/Doc/Release/Functions.html#Hook-Functions
 function precmd() {
-    # [ -d FILE ]           True if FILE exists and is a directory.
-    # [ -x FILE ]           True if FILE exists and is executable.
-    # [ -e FILE ]           True if FILE exists.
+    # [ -d FILE ]   True if FILE exists and is a directory.
+    # [ -x FILE ]   True if FILE exists and is executable.
+    # [ -e FILE ]   True if FILE exists.
     if [ -d .git ] \
         && [ ! -x .git/hooks/pre-commit ] \
         && [ -e .pre-commit-config.yaml ] \
