@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# shellcheck shell=bash disable=SC1090
 
 command -v 'kubectl' &> /dev/null && source <(kubectl completion zsh)
 command -v 'op' &> /dev/null && source <(op completion zsh) && compdef _op op
