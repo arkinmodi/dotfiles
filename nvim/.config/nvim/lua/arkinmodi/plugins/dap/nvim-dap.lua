@@ -2,7 +2,7 @@ return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-		{ "rcarriga/nvim-dap-ui", config = true },
+		{ "rcarriga/nvim-dap-ui", config = true, dependencies = { "nvim-neotest/nvim-nio" } },
 		{ "theHamsta/nvim-dap-virtual-text", config = true },
 	},
 	keys = { "<F1>", "<F4>", "<F5>", "<F6>", "<F7>", "<F8>", "<F9>" },
