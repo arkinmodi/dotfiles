@@ -56,8 +56,8 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "delete selection with
 vim.keymap.set("n", "<leader>D", '"_D', { desc = "delete current line without yanking" })
 
 -- quick-fix navigation
-vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "cnext with centered cursor" })
 vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "cpext with centered cursor" })
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "cnext with centered cursor" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "lnext with centered cursor" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "lpext with centered cursor" })
 
@@ -79,8 +79,8 @@ vim.diagnostic.config({
 })
 
 -- buffer
-vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "bnext" })
 vim.keymap.set("n", "[b", "<cmd>bprev<CR>", { desc = "bprev" })
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "bnext" })
 vim.keymap.set("n", "<leader>bq", "<cmd>bdelete<CR>", { desc = "bdelete" })
 
 -- LSP
