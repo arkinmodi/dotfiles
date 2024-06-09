@@ -23,6 +23,13 @@ else
         -maxdepth 1 \
         -type d \
         | fzf \
+        --color=bg+:#1B2733 \
+        --color=border:#B3B1AD \
+        --color=gutter:#0D1016 \
+        --color=hl+:#E6B450 \
+        --color=hl:#E6B450 \
+        --color=pointer:#FF8F40 \
+        --color=prompt:#59C2FF \
         --preview '
             onefetch {} \
             --disabled-fields churn authors contributors \

@@ -22,6 +22,7 @@ return {
 					SignColumn = { bg = "None" },
 					VertSplit = { bg = "None" },
 					WhichKeyFloat = { bg = "None" },
+					WinSeparator = { bg = "None" },
 				},
 			})
 			vim.cmd.colorscheme("ayu")
