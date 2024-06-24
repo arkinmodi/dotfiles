@@ -12,7 +12,7 @@ return {
 			arch = "_arm"
 		end
 
-		local jdtls_home = vim.fn.glob("~/opt/java/jdt-language-server-*")
+		local jdtls_home = vim.fn.glob("~/opt/java/jdtls-*/jdt-language-server-*")
 		if jdtls_home == nil or jdtls_home == "" then
 			print("failed to find JDTLS install directory")
 			return
