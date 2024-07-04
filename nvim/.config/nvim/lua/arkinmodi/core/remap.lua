@@ -101,4 +101,4 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-vim.keymap.set("n", "\\", "<cmd>set hlsearch!<CR>", { desc = "toggle search highlighting" })
+vim.keymap.set("n", "\\", "<cmd>noh<CR>", { desc = "clear search highlighting" })
