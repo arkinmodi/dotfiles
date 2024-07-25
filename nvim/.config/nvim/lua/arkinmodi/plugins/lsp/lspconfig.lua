@@ -67,6 +67,26 @@ return {
 			lspconfig["ansiblels"].setup({ capabilities = capabilities }) -- Ansible
 		end
 
+		if vim.fn.executable("ngserver") == 1 then
+			-- Angular
+			local node_lib = vim.fn.glob("~/opt/node-*/*/*/lib/node_modules/")
+			local ngserver_cmd = {
+				"ngserver",
+				"--stdio",
+				"--tsProbeLocations",
+				node_lib,
+				"--ngProbeLocations",
+				node_lib,
+			}
+			lspconfig["angularls"].setup({
+				cmd = ngserver_cmd,
+				capabilities = capabilities,
+				on_new_config = function(new_config, _)
+					new_config.cmd = ngserver_cmd
+				end,
+			})
+		end
+
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			lspconfig["yamlls"].setup({
