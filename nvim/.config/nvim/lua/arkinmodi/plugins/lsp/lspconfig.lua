@@ -67,10 +67,6 @@ return {
 			lspconfig["ansiblels"].setup({ capabilities = capabilities }) -- Ansible
 		end
 
-		if vim.fn.executable("ngserver") == 1 then
-			lspconfig["angularls"].setup({ capabilities = capabilities }) -- Ansible
-		end
-
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			lspconfig["yamlls"].setup({
