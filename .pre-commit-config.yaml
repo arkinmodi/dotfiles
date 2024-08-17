@@ -16,7 +16,6 @@ repos:
       - id: debug-statements
       - id: double-quote-string-fixer
       - id: end-of-file-fixer
-        exclude: json
       - id: trailing-whitespace
 
   - repo: https://github.com/asottile/reorder-python-imports
