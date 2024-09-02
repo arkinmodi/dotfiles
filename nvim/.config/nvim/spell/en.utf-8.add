@@ -64,3 +64,7 @@ boolean
 catalog
 enablement
 Customizable
+Metadata
+metadata
+UUID
+JWT
