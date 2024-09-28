@@ -84,5 +84,13 @@ repos:
         additional_dependencies:
           - prettier@latest
         types_or:
-          - markdown
           - yaml
+
+      - id: prettier-markdown
+        name: Prettier (markdown)
+        language: node
+        entry: prettier --write --prose-wrap always
+        additional_dependencies:
+          - prettier@latest
+        types_or:
+          - markdown
