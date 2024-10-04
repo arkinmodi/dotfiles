@@ -36,7 +36,7 @@ return {
 		end
 
 		if vim.fn.executable("typescript-language-server") == 1 then
-			lspconfig["tsserver"].setup({ capabilities = capabilities }) -- TypeScript
+			lspconfig["ts_ls"].setup({ capabilities = capabilities }) -- TypeScript
 		end
 
 		if vim.fn.executable("vscode-json-language-server") == 1 then
