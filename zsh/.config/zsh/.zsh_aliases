@@ -41,4 +41,12 @@ if [[ $(uname) == 'Darwin' ]]; then
         && alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 fi
 
+if [[ -n "$JDK11" ]]; then
+    alias java11='JAVA_HOME="$JDK11" PATH="$JDK11/bin:$PATH" java'
+fi
+
+if [[ -n "$JDK17" ]]; then
+    alias java17='JAVA_HOME="$JDK17" PATH="$JDK17/bin:$PATH" java'
+fi
+
 bindkey -s ^t 'tmux-sessionizer\n'
