@@ -1,5 +1,6 @@
 return {
 	"folke/trouble.nvim",
+	tag = "v2.10.0",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("trouble").setup()
