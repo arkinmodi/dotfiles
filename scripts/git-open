@@ -6,6 +6,7 @@ import argparse
 import re
 import subprocess
 import sys
+import urllib.parse
 import webbrowser
 
 
@@ -64,20 +65,23 @@ def file(
     remote: str,
     branch_name: str | None,
     filepath: str,
+    line_numbers: tuple[int, int] | None,
     open_browser: bool,
 ) -> int:
     if not branch_name:
         branch_name = _get_branch_name()
-    filename, *line_number = filepath.rsplit(':', maxsplit=1)
 
     url = _get_repo_url(remote)
     if url.endswith('/wiki'):
-        url += f'/{filename.removesuffix(".md")}'
+        url += f'/{urllib.parse.quote_plus(filepath.removesuffix(".md"))}'
     else:
-        url += f'/blob/{branch_name}/{filename}'
+        url += f'/blob/{branch_name}/{urllib.parse.quote_plus(filepath)}'
 
-    if line_number and line_number[0]:
-        url += f'#L{"-L".join(line_number[0].split("-"))}'
+    if line_numbers:
+        if line_numbers[0] == line_numbers[1]:
+            url += f'#L{line_numbers[0]}'
+        else:
+            url += f'#L{line_numbers[0]}-L{line_numbers[1]}'
 
     print(url)
     if open_browser:
@@ -120,6 +124,14 @@ def main() -> int:
         action='store_true',
         help='Do not open a file in the browser',
     )
+    file_parser.add_argument(
+        '-L',
+        '--line',
+        '--line-number',
+        action='append',
+        nargs='*',
+        type=int,
+    )
     file_parser.add_argument('filename', nargs=1)
     args = parser.parse_args()
 
@@ -129,10 +141,17 @@ def main() -> int:
     elif subparser_name == 'pr':
         return pull_request(args.remote, args.branch, not args.no_browser)
     elif subparser_name == 'file':
+        line_numbers = []
+        if args.line:
+            for line in args.line:
+                line_numbers.extend(line)
+            line_numbers.sort()
+
         return file(
             args.remote,
             args.branch,
             args.filename[0],
+            (line_numbers[0], line_numbers[-1]) if line_numbers else None,
             not args.no_browser,
         )
     else:
