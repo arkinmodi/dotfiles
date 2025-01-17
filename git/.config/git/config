@@ -32,6 +32,7 @@
   ap = add -p
   comit = commit
   git = !git
+  gpre = grep
   grpe = grep
   of = open file
   opr = open pr
