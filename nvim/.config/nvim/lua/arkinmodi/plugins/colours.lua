@@ -28,36 +28,4 @@ return {
 			vim.cmd.colorscheme("ayu")
 		end,
 	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = true,
-		opts = {
-			transparent_background = true,
-		},
-	},
-	{
-		"navarasu/onedark.nvim",
-		lazy = true,
-		opts = {
-			style = "darker",
-			transparent = true,
-		},
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		lazy = true,
-		opts = {
-			disable_background = true,
-			disable_float_background = true,
-		},
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = true,
-		opts = {
-			transparent = true,
-		},
-	},
 }
