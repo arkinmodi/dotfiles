@@ -15,10 +15,16 @@ return {
 	},
 	cmd = { "Telescope" },
 	config = function()
+		local actions = require("telescope.actions")
 		local keymaps = {
 			["<C-p>"] = require("telescope.actions.layout").toggle_preview,
-			["<C-q>"] = require("telescope.actions").send_to_qflist
-				+ require("telescope.actions").open_qflist,
+			["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+			["<C-k>"] = actions.preview_scrolling_up,
+			["<C-j>"] = actions.preview_scrolling_down,
+
+			-- Not yet available in 0.1.x branch
+			-- ["<C-h>"] = actions.preview_scrolling_left,
+			-- ["<C-l>"] = actions.preview_scrolling_right,
 		}
 
 		require("telescope").setup({
