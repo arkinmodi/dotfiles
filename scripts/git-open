@@ -125,7 +125,7 @@ def main() -> int:
         help='Do not open a file in the browser',
     )
     file_parser.add_argument(
-        '-L',
+        '-l',
         '--line',
         '--line-number',
         action='append',
