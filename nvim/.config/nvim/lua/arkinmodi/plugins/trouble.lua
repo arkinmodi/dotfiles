@@ -1,18 +1,22 @@
 return {
 	"folke/trouble.nvim",
-	tag = "v2.10.0",
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		require("trouble").setup()
-
-		vim.keymap.set("n", "<leader>tt", require("trouble").toggle, { desc = "trouble.toggle()" })
-
-		vim.keymap.set("n", "[t", function()
-			require("trouble").previous({ skip_groups = true, jump = true })
-		end, { desc = "trouble.previous()" })
-
-		vim.keymap.set("n", "]t", function()
-			require("trouble").next({ skip_groups = true, jump = true })
-		end, { desc = "trouble.next()" })
-	end,
+	cmd = "Trouble",
+	opts = {},
+	keys = {
+		{
+			"<leader>tt",
+			"<cmd>Trouble diagnostics toggle<cr>",
+			desc = "Diagnostics (Trouble)",
+		},
+		{
+			"[t",
+			"<cmd>Trouble diagnostics prev focus=true<cr>",
+			desc = "Diagnostics Previous (Trouble)",
+		},
+		{
+			"]t",
+			"<cmd>Trouble diagnostics next focus=true<cr>",
+			desc = "Diagnostics Next (Trouble)",
+		},
+	},
 }
