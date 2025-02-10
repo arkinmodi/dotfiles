@@ -13,9 +13,12 @@ return {
 		"<leader>ps",
 		"<leader>pws",
 	},
+	cmd = { "Telescope" },
 	config = function()
 		local keymaps = {
 			["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+			["<C-q>"] = require("telescope.actions").send_to_qflist
+				+ require("telescope.actions").open_qflist,
 		}
 
 		require("telescope").setup({
