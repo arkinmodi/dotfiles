@@ -74,8 +74,10 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "vim.diagnostic.got
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "vim.diagnostic.goto_next" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float" })
 vim.diagnostic.config({
-	update_in_insert = true,
 	float = { focusable = false, source = true },
+	update_in_insert = true,
+	virtual_lines = { current_line = true },
+	virtual_text = true,
 })
 
 -- buffer
