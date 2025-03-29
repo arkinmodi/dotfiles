@@ -15,7 +15,7 @@ vim.opt.statusline = string.format(
 )
 
 function StatuslineLspClients()
-	local clients = vim.lsp.buf_get_clients()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	local client_names = {}
 	for _, client in pairs(clients) do
 		table.insert(client_names, client["name"])
