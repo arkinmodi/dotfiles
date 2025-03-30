@@ -89,6 +89,8 @@ source "$ZDOTDIR/.zshenv"
 source "$ZDOTDIR/.zsh_aliases"
 source "$ZDOTDIR/.zsh_functions"
 
+[[ -f "$HOME/.config/op/plugins.sh" ]] && source "$HOME/.config/op/plugins.sh"
+
 # shellcheck disable=SC1090
 command -v 'direnv' &> /dev/null && source <(direnv hook zsh)
 
