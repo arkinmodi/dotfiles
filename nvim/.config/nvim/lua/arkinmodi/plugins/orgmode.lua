@@ -1,9 +1,6 @@
 return {
-	-- enabled = false,
 	"nvim-orgmode/orgmode",
-	dependencies = {
-		{ "nvim-treesitter/nvim-treesitter", lazy = true },
-	},
+	event = "VeryLazy",
 	ft = "org",
 	opts = {
 		org_startup_folded = "showeverything",
