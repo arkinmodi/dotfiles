@@ -85,6 +85,7 @@ repos:
           - prettier@latest
         types_or:
           - yaml
+          - javascript
 
       - id: prettier-markdown
         name: Prettier (markdown)

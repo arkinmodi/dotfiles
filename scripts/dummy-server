@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const http = require("http");
+
+const port = process.argv[2] || 8000;
+console.log(`Starting server on port ${port}.`);
+
+const server = http.createServer((req, res) => {
+    console.log(req.method, req.url);
+
+    for (const h in req.headers) {
+        console.log(`${h}: ${req.headers[h]}`);
+    }
+
+    let body = "";
+    req.on("data", (chuck) => (body += chuck));
+    req.on("end", () => console.log(body + "\n"));
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ message: "Hello World" }));
+});
+
+server.listen(port);
