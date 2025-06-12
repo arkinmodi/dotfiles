@@ -50,6 +50,9 @@
 [fetch]
   prune = true
 
+[grep]
+  extendedRegexp = true
+
 [includeIf "hasconfig:remote.*.url:https://gitlab.cas.mcmaster.ca/**"]
   path = ~/.dotfiles.work/git/mcmaster-university.inc
 
