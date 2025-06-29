@@ -1,95 +1,123 @@
 return {
 	"neovim/nvim-lspconfig",
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local lspconfig = require("lspconfig")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 		-- Supported LSP Configurations
-		-- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
+		-- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 
 		-- Lua
 		if vim.fn.executable("lua-language-server") == 1 then
-			lspconfig["lua_ls"].setup({
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							-- Get the language server to recognize the `vim` global
-							globals = { "vim" },
-						},
-					},
-				},
-			})
-		end
+			vim.lsp.config("lua_ls", {
+				on_init = function(client)
+					if client.workspace_folders then
+						local path = client.workspace_folders[1].name
+						if
+							path ~= vim.fn.stdpath("config")
+							and (
+								vim.uv.fs_stat(path .. "/.luarc.json")
+								or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+							)
+						then
+							return
+						end
+					end
 
-		if vim.fn.executable("rust-analyzer") == 1 then
-			lspconfig["rust_analyzer"].setup({ capabilities = capabilities }) -- Rust
-		end
-
-		if vim.fn.executable("gopls") == 1 then
-			lspconfig["gopls"].setup({ capabilities = capabilities }) -- Go
-		end
-
-		if vim.fn.executable("typescript-language-server") == 1 then
-			lspconfig["ts_ls"].setup({ capabilities = capabilities }) -- TypeScript
-		end
-
-		if vim.fn.executable("vscode-json-language-server") == 1 then
-			lspconfig["jsonls"].setup({ capabilities = capabilities }) -- JSON
-		end
-
-		if vim.fn.executable("vscode-css-language-server") == 1 then
-			lspconfig["cssls"].setup({ capabilities = capabilities }) -- CSS
-		end
-
-		if vim.fn.executable("vscode-html-language-server") == 1 then
-			lspconfig["html"].setup({ capabilities = capabilities }) -- HTML
-		end
-
-		if vim.fn.executable("vscode-eslint-language-server") == 1 then
-			lspconfig["eslint"].setup({ capabilities = capabilities }) -- ESLint
-		end
-
-		if vim.fn.executable("tailwindcss-language-server") == 1 then
-			lspconfig["tailwindcss"].setup({ capabilities = capabilities }) -- Tailwind CSS
-		end
-
-		if vim.fn.executable("graphql-lsp") == 1 then
-			lspconfig["graphql"].setup({ capabilities = capabilities }) -- Graphql
-		end
-
-		if vim.fn.executable("ansible-language-server") == 1 then
-			lspconfig["ansiblels"].setup({ capabilities = capabilities }) -- Ansible
-		end
-
-		if vim.fn.executable("ngserver") == 1 then
-			-- Angular
-			local node_lib = vim.fn.glob("~/opt/node-*/*/*/lib/node_modules/")
-			local ngserver_cmd = {
-				"ngserver",
-				"--stdio",
-				"--tsProbeLocations",
-				node_lib,
-				"--ngProbeLocations",
-				node_lib,
-			}
-			lspconfig["angularls"].setup({
-				cmd = ngserver_cmd,
-				capabilities = capabilities,
-				on_new_config = function(new_config, _)
-					new_config.cmd = ngserver_cmd
+					client.config.settings.Lua =
+						vim.tbl_deep_extend("force", client.config.settings.Lua, {
+							runtime = {
+								-- Tell the language server which version of Lua you're using (most
+								-- likely LuaJIT in the case of Neovim)
+								version = "LuaJIT",
+								-- Tell the language server how to find Lua modules same way as Neovim
+								-- (see `:h lua-module-load`)
+								path = {
+									"lua/?.lua",
+									"lua/?/init.lua",
+								},
+							},
+							-- Make the server aware of Neovim runtime files
+							workspace = {
+								checkThirdParty = false,
+								library = {
+									vim.env.VIMRUNTIME,
+									-- Depending on the usage, you might want to add additional paths
+									-- here.
+									-- '${3rd}/luv/library'
+									-- '${3rd}/busted/library'
+								},
+								-- Or pull in all of 'runtimepath'.
+								-- NOTE: this is a lot slower and will cause issues when working on
+								-- your own configuration.
+								-- See https://github.com/neovim/nvim-lspconfig/issues/3189
+								-- library = {
+								--   vim.api.nvim_get_runtime_file('', true),
+								-- }
+							},
+						})
 				end,
+				settings = { Lua = {} },
 			})
+			vim.lsp.enable("lua_ls")
+		end
+
+		-- Rust
+		if vim.fn.executable("rust-analyzer") == 1 then
+			vim.lsp.enable("rust_analyzer")
+		end
+
+		-- Go
+		if vim.fn.executable("gopls") == 1 then
+			vim.lsp.enable("gopls")
+		end
+
+		-- TypeScript
+		if vim.fn.executable("typescript-language-server") == 1 then
+			vim.lsp.enable("ts_ls")
+		end
+
+		-- JSON
+		if vim.fn.executable("vscode-json-language-server") == 1 then
+			vim.lsp.enable("jsonls")
+		end
+
+		-- CSS
+		if vim.fn.executable("vscode-css-language-server") == 1 then
+			vim.lsp.enable("cssls")
+		end
+
+		-- HTML
+		if vim.fn.executable("vscode-html-language-server") == 1 then
+			vim.lsp.enable("html")
+		end
+
+		-- ESLint
+		if vim.fn.executable("vscode-eslint-language-server") == 1 then
+			vim.lsp.enable("eslint")
+		end
+
+		-- Tailwind CSS
+		if vim.fn.executable("tailwindcss-language-server") == 1 then
+			vim.lsp.enable("tailwindcss")
+		end
+
+		-- GraphQL
+		if vim.fn.executable("graphql-lsp") == 1 then
+			vim.lsp.enable("graphql")
+		end
+
+		-- Ansible
+		if vim.fn.executable("ansible-language-server") == 1 then
+			vim.lsp.enable("ansiblels")
+		end
+
+		-- Angular
+		if vim.fn.executable("ngserver") == 1 then
+			vim.lsp.enable("angularls")
 		end
 
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
-			lspconfig["yamlls"].setup({
+			vim.lsp.config("yamlls", {
 				capabilities = capabilities,
 				settings = {
 					yaml = {
@@ -104,6 +132,7 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable("yamlls")
 		end
 	end,
 }
