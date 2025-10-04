@@ -118,7 +118,6 @@ return {
 		-- YAML
 		if vim.fn.executable("yaml-language-server") == 1 then
 			vim.lsp.config("yamlls", {
-				capabilities = capabilities,
 				settings = {
 					yaml = {
 						schemas = {

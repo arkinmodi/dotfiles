@@ -48,12 +48,12 @@ return {
 		local bundles = {
 			vim.fn.glob(
 				"~/opt/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
-				1
+				true
 			),
 		}
 		vim.list_extend(
 			bundles,
-			vim.split(vim.fn.glob("~/opt/java/vscode-java-test/server/*.jar", 1), "\n")
+			vim.split(vim.fn.glob("~/opt/java/vscode-java-test/server/*.jar", true), "\n")
 		)
 
 		vim.api.nvim_create_autocmd("FileType", {

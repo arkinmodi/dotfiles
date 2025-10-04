@@ -70,9 +70,16 @@ vim.keymap.set("i", "<S-Tab>", "<C-d>", { desc = "un-indent" })
 
 -- diagnostics
 vim.keymap.set("n", "<leader>tt", vim.diagnostic.setqflist, { desc = "vim.diagnostic.setqflist" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "vim.diagnostic.goto_prev" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "vim.diagnostic.goto_next" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "vim.diagnostic.open_float" })
+
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = -1 })
+end, { desc = "got to previous diagnostic" })
+
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = 1 })
+end, { desc = "got to next diagnostic" })
+
 vim.diagnostic.config({
 	float = { focusable = false, source = true },
 	update_in_insert = true,
@@ -87,6 +94,7 @@ vim.keymap.set("n", "<leader>bq", "<cmd>bdelete<CR>", { desc = "bdelete" })
 
 -- LSP
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	opts = opts or {}
 	opts.border = opts.border
