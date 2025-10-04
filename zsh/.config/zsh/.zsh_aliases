@@ -49,4 +49,12 @@ if [[ -n "$JDK17" ]]; then
     alias java17='JAVA_HOME="$JDK17" PATH="$JDK17/bin:$PATH" java'
 fi
 
+if [[ -n "$JDK21" ]]; then
+    alias java21='JAVA_HOME="$JDK21" PATH="$JDK21/bin:$PATH" java'
+fi
+
+if [[ -n "$JDK25" ]]; then
+    alias java25='JAVA_HOME="$JDK25" PATH="$JDK25/bin:$PATH" java'
+fi
+
 bindkey -s ^t 'tmux-sessionizer\n'

@@ -18,6 +18,9 @@ export EDITOR="nvim"
 export PATH="$HOME/bin:$PATH"
 
 # Java
+[[ -d "$HOME/opt/java/java-25.jdk/Contents/Home" ]] \
+    && export JDK25="$HOME/opt/java/java-25.jdk/Contents/Home"
+
 [[ -d "$HOME/opt/java/java-21.jdk/Contents/Home" ]] \
     && export JDK21="$HOME/opt/java/java-21.jdk/Contents/Home"
 

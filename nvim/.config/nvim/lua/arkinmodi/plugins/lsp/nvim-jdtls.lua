@@ -41,6 +41,9 @@ return {
 		if os.getenv("JDK21") then
 			table.insert(runtimes, { name = "JavaSE-21", path = os.getenv("JDK21") })
 		end
+		if os.getenv("JDK25") then
+			table.insert(runtimes, { name = "JavaSE-25", path = os.getenv("JDK25") })
+		end
 
 		local bundles = {
 			vim.fn.glob(
