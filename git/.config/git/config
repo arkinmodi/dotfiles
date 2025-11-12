@@ -38,6 +38,7 @@
   opr = open pr
   or = open repo
   pb = prune-branches
+  pul = pull
   pw = prune-worktrees
   s = status
   sw = switch
