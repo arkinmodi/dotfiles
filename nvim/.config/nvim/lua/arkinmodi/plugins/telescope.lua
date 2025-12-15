@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
+	tag = "v0.2.0",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -21,10 +21,8 @@ return {
 			["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 			["<C-k>"] = actions.preview_scrolling_up,
 			["<C-j>"] = actions.preview_scrolling_down,
-
-			-- Not yet available in 0.1.x branch
-			-- ["<C-h>"] = actions.preview_scrolling_left,
-			-- ["<C-l>"] = actions.preview_scrolling_right,
+			["<C-h>"] = actions.preview_scrolling_left,
+			["<C-l>"] = actions.preview_scrolling_right,
 		}
 
 		require("telescope").setup({
