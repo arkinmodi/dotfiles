@@ -33,6 +33,11 @@ export PATH="$HOME/bin:$PATH"
 [[ -d "$HOME/opt/java/java-8.jdk/Contents/Home" ]] \
     && export JDK8="$HOME/opt/java/java-8.jdk/Contents/Home"
 
+# Android Studio
+[[ "$(uname)" == 'Darwin' && -d "$HOME/Library/Android/sdk" ]] \
+    && export ANDROID_HOME="$HOME/Library/Android/sdk" \
+    && export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+
 # shellcheck disable=SC2155,SC2046
 readlink "$(which java)" >& /dev/null \
     && export JAVA_HOME="$(dirname $(dirname $(readlink $(which java))))"
