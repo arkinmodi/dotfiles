@@ -60,6 +60,8 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
+autoload zmv
+
 # Executed before each prompt
 # https://zsh.sourceforge.io/Doc/Release/Functions.html#Hook-Functions
 function precmd() {

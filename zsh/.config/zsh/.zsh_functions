@@ -14,3 +14,12 @@ else
 fi
 cd "$dest" || return
 }
+
+function copy-command() {
+    echo -n "$BUFFER" | pbcopy
+    zle -M "Copied to clipboard"
+}
+
+zle -N copy-command
+bindkey '^xx' copy-command
+bindkey '^x^x' copy-command
