@@ -42,7 +42,7 @@
   pw = prune-worktrees
   s = status
   sw = switch
-  swc = switch origin/main -c
+  swc = switch origin/HEAD -c
   wt = worktree
 
 [worktree]
