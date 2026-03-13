@@ -50,3 +50,6 @@ export SAM_CLI_TELEMETRY=0
 readlink "$(which rustup)" >& /dev/null \
     && export CARGO_HOME="$(dirname $(dirname $(readlink $(which cargo))))" \
     && export RUSTUP_HOME="$(dirname $CARGO_HOME)/.rustup"
+
+# C#/.NET
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
