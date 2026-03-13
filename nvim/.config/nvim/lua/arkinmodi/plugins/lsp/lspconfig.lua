@@ -133,5 +133,8 @@ return {
 			})
 			vim.lsp.enable("yamlls")
 		end
+
+		-- Using ./roslyn.lua plugin instead of nvim-lspconfig
+		-- vim.lsp.enable("roslyn_ls")
 	end,
 }
