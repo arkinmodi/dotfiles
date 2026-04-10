@@ -62,9 +62,7 @@ bindkey '^x^e' edit-command-line
 
 autoload zmv
 
-# Executed before each prompt
-# https://zsh.sourceforge.io/Doc/Release/Functions.html#Hook-Functions
-function precmd() {
+function install_precommit() {
     # [ -d FILE ]   True if FILE exists and is a directory.
     # [ -x FILE ]   True if FILE exists and is executable.
     # [ -e FILE ]   True if FILE exists.
@@ -76,6 +74,10 @@ function precmd() {
         pre-commit install --hook-type pre-commit
     fi
 }
+
+# Executed before each prompt
+# https://zsh.sourceforge.io/Doc/Release/Functions.html#Hook-Functions
+precmd_functions+=( install_precommit )
 
 # Homebrew
 [ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
