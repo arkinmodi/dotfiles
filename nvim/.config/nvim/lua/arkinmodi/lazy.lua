@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
 	{ import = "arkinmodi.plugins" },
 	{ import = "arkinmodi.plugins.lsp" },
-	{ import = "arkinmodi.plugins.dap" },
 }, {
 	install = {
 		colorscheme = { "ayu" },

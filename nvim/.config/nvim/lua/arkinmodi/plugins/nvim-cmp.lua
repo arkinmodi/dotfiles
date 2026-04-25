@@ -29,7 +29,6 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lua" },
 				{ name = "path" },
-				{ name = "orgmode" },
 			}, {
 				{ name = "buffer" },
 			}),
