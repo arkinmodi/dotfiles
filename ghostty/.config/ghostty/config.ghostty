@@ -1,8 +1,8 @@
 background-opacity = 0.97
-theme = Ayu
-
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 18
+theme = Ayu
+title = " "
 
 # disable programming ligatures
 font-feature = -calt
