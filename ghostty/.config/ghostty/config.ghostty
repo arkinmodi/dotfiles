@@ -1,0 +1,13 @@
+background-opacity = 0.97
+theme = Ayu
+
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 18
+
+# disable programming ligatures
+font-feature = -calt
+
+# Block cursor
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
