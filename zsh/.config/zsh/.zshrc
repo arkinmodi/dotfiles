@@ -80,7 +80,7 @@ function install_precommit() {
 precmd_functions+=( install_precommit )
 
 # Homebrew
-[ -e "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -e "/opt/homebrew/bin/brew" ] && source "$ZDOTDIR/homebrew_shellenv.zsh"
 
 # Runtime Generated Completions
 source "$ZDOTDIR/.zsh_completions"
