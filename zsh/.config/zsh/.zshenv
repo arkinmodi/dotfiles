@@ -33,6 +33,8 @@ export PATH="$HOME/bin:$PATH"
 [[ -d "$HOME/opt/java/java-8.jdk/Contents/Home" ]] \
     && export JDK8="$HOME/opt/java/java-8.jdk/Contents/Home"
 
+export MAVEN_OPTS='-Dmaven.artifact.threads=30'
+
 # Android Studio
 [[ "$(uname)" == 'Darwin' && -d "$HOME/Library/Android/sdk" ]] \
     && export ANDROID_HOME="$HOME/Library/Android/sdk" \
