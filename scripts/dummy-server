@@ -12,9 +12,22 @@ const server = http.createServer(async (req, res) => {
         console.log(`${h}: ${req.headers[h]}`);
     }
 
-    let body = "";
-    req.on("data", (chuck) => (body += chuck));
-    req.on("end", () => console.log(body + "\n"));
+    const chunks = [];
+    req.on("data", (chunk) => chunks.push(chunk));
+    req.on("end", () => {
+        const body = Buffer.concat(chunks);
+        const contentType = req.headers["content-type"] || "";
+
+        if (contentType.includes("application/x-protobuf")) {
+            console.log("\nProtobuf body (hex):");
+            console.log(body.toString("hex"));
+            console.log("\nProtobuf body (base64):");
+            console.log(body.toString("base64"));
+            console.log("\nProtobuf body (length):", body.length, "bytes\n");
+        } else {
+            console.log(body.toString("utf8") + "\n");
+        }
+    });
 
     if (req.method === "OPTIONS") {
         res.writeHead(200, {
