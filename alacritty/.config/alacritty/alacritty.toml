@@ -29,16 +29,16 @@ live_config_reload = true
 
 [keyboard]
 bindings = [
-  {chars = " ", key = "Space", mods = "Alt"},
-  {chars = "\u0015", key = "Back", mods = "Super"}, # delete word/line
-  {chars = "\u001BOF", key = "Right", mode = "AppCursor", mods = "Command"}, # End
-  {chars = "\u001BOH", key = "Left", mode = "AppCursor", mods = "Command"}, # Home
-  {chars = "\u001Bb", key = "Left", mods = "Alt"}, # one word left
-  {chars = "\u001Bf", key = "Right", mods = "Alt"}, # one word right
-  {chars = "\u001Bh", key = "H", mods = "Alt"},
-  {chars = "\u001Bj", key = "J", mods = "Alt"},
-  {chars = "\u001Bk", key = "K", mods = "Alt"},
-  {chars = "\u001Bl", key = "L", mods = "Alt"},
+  { chars = " ", key = "Space", mods = "Alt" },
+  { chars = "\u0015", key = "Back", mods = "Super" }, # delete word/line
+  { chars = "\u001BOF", key = "Right", mode = "AppCursor", mods = "Command" }, # End
+  { chars = "\u001BOH", key = "Left", mode = "AppCursor", mods = "Command" }, # Home
+  { chars = "\u001Bb", key = "Left", mods = "Alt" }, # one word left
+  { chars = "\u001Bf", key = "Right", mods = "Alt" }, # one word right
+  { chars = "\u001Bh", key = "H", mods = "Alt" },
+  { chars = "\u001Bj", key = "J", mods = "Alt" },
+  { chars = "\u001Bk", key = "K", mods = "Alt" },
+  { chars = "\u001Bl", key = "L", mods = "Alt" },
 ]
 
 [window]
