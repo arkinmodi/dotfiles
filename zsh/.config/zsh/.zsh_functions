@@ -15,6 +15,14 @@ fi
 cd "$dest" || return
 }
 
+# Prints all 256 colours
+function colours() {
+    for c in {0..255}; do
+        print -Pn "%K{$c}  %k%F{$c}$(printf "%03d" $c) %f"
+        (( (c+1)%8 == 0 )) && print
+    done
+}
+
 function copy-command() {
     echo -n "$BUFFER" | pbcopy
     zle -M "Copied to clipboard"
